@@ -1,4 +1,4 @@
-document.lastScrollPosition = 0;
+*/ document.lastScrollPosition = 0;
 document.lastCentered = 0;
 document.onWayTo = null;
 
@@ -29,4 +29,4 @@ document.addEventListener('scroll', () => {
   })
 
   document.lastScrollPosition = window.pageYOffset;
-})
+}) /*
