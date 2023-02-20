@@ -10,16 +10,16 @@
 
 <body>
 
-    <header>
+    <header id="headerLinks">
         <a href="" class="logo"> vyvv
         </a>
         <nav class="center desktop">
-            <a href="">About</a>
-            <a href="">Strategy</a>
-            <a href="">Research</a>
-            <a href="">Portfolio</a>
-            <a href="">Partner</a>
-            <a href="">Contact</a>
+            <a href="#aboutsection" class="center desktop links">About</a>
+            <a href="#strategysection" class="center desktop links">Strategy</a>
+            <a href="#researchsection" class="center desktop links">Research</a>
+            <a href="#portfoliosection" class="center desktop links">Portfolio</a>
+            <a href="#partnersection" class="center desktop links">Partner</a>
+            <a href="#contactsection" class="center desktop links">Contact</a>
         </nav>
         <nav class="right">
             <a href="" class="desktop">Login</a>
@@ -34,12 +34,13 @@
 
     <aside>
         <button class="close">&times;</button>
-        <a href="">About</a>
-        <a href="">Strategy</a>
-        <a href="">Research</a>
-        <a href="">Portfolio</a>
-        <a href="">Partner</a>
-        <a href="">Contact</a>
+        <div class="asidelinksclose">
+        <a href="#aboutsection">About</a>
+        <a href="#strategysection">Strategy</a>
+        <a href="#researchsection">Research</a>
+        <a href="#portfoliosection">Portfolio</a>
+        <a href="#partnersection">Partner</a>
+        <a href="#contactsection">Contact</a>
         <a href=""></a>
         <a href="">Login</a>
         <a href="">Store</a>
@@ -47,10 +48,11 @@
         <a href=""></a>
         <a href="">Twitter</a>
         <a href="">Linkedin</a>
+        </div>
     </aside>
 
 
-    <section style="background-image: url('resources/images/img1.jpg');" class="active">
+    <section style="background-image: url('resources/images/img1.jpg');" class="active" id="aboutsection">
         <div class="content">
             <h1></h1>
             <p>text1 <a href="">link1</a></p>
@@ -61,7 +63,7 @@
         </div>
     </section>
 
-    <section style="background-image: url('resources/images/img2.jpg')">
+    <section style="background-image: url('resources/images/img2.jpg')" id="strategysection">
         <div class="content">
             <h1>Strategy</h1>
             <p>text1 <a href="">link1</a></p>
@@ -72,7 +74,7 @@
         </div>
     </section>
 
-    <section style="background-image: url('resources/images/img3.jpg')">
+    <section style="background-image: url('resources/images/img3.jpg')" id="researchsection">
         <div class="content">
             <h1>Research</h1>
             <p>text1 <a href="">link1</a></p>
@@ -83,7 +85,7 @@
         </div>
     </section>
 
-    <section style="background-image: url('resources/images/img4.jpg')">
+    <section style="background-image: url('resources/images/img4.jpg')" id="portfoliosection">
         <div class="content">
             <h1>Portfolio</h1>
             <p>text1 <a href="">link1</a></p>
@@ -94,7 +96,7 @@
         </div>
     </section>
 
-    <section style="background-image: url('resources/images/img5.jpg')">
+    <section style="background-image: url('resources/images/img5.jpg')" id="partnersection">
         <div class="content">
             <h1>Partner</h1>
             <p>text1 <a href="">link1</a></p>
@@ -105,7 +107,7 @@
         </div>
     </section>
 
-    <section style="background-image: url('resources/images/img6.jpg')">
+    <section style="background-image: url('resources/images/img6.jpg')" id="contactsection">
         <div class="content">
             <h1>Contact</h1>
             <p>text1 <a href="">link1</a></p>

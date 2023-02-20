@@ -14,6 +14,9 @@ const openMenu = () => {
   document.querySelector('aside button.close').onclick = e => {
     closeMenu();
   }
+  document.querySelector('.asidelinksclose').onclick = e => {
+    closeMenu();
+  }
   document.querySelector('.backdrop').onclick = e => {
     closeMenu();
   }
