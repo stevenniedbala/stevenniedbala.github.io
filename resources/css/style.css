@@ -125,6 +125,7 @@ aside a{
     padding: 12px 0;
     font-size: 14px;
     font-weight:500;
+    cursor: pointer;
 }
 aside button.close{
     font-size:24px;
