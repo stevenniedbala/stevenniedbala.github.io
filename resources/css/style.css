@@ -39,6 +39,7 @@ header a{
 header nav a{
     text-decoration:none;
     padding: 5px 10px;
+    cursor: pointer;
 }
 header nav.center{
     text-align: center;
@@ -124,6 +125,7 @@ aside a{
     padding: 12px 0;
     font-size: 14px;
     font-weight:500;
+    cursor: pointer;
 }
 aside button.close{
     font-size:24px;
