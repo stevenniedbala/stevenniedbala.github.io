@@ -6,7 +6,7 @@
 body{
     color:#171a20;
     font-family: sans-serif;
-    overflow: hidden; 
+    /* overflow: hidden; */ 
 }
 html{
     scroll-behavior: smooth;
