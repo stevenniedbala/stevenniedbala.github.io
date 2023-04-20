@@ -16,3 +16,29 @@ buttons.forEach(button => {
     delete activeSlide.dataset.active
   })
 })
+
+
+// Add swipe functionality
+
+document.addEventListener('touchstart', e => {
+  // Get the current slide
+  const activeSlide = document.querySelector('.slide.active')
+
+  // If the user swiped left, go to the previous slide
+  if (e.direction === 'left') {
+    const previousSlide = activeSlide.previousElementSibling
+    if (previousSlide) {
+      activeSlide.classList.remove('active')
+      previousSlide.classList.add('active')
+    }
+  }
+
+  // If the user swiped right, go to the next slide
+  if (e.direction === 'right') {
+    const nextSlide = activeSlide.nextElementSibling
+    if (nextSlide) {
+      activeSlide.classList.remove('active')
+      nextSlide.classList.add('active')
+    }
+  }
+})
