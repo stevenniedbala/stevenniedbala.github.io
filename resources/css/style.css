@@ -237,17 +237,17 @@ aside button.close{
     cursor: pointer;
     border-radius: .25rem;
     padding: 0 .5rem;
-    background-color: rgba(0, 0, 0, .1);
+    background-color: rgba(0, 0, 0, 0);
   }
   
   .carousel-button:hover,
   .carousel-button:focus {
     color: white;
-    background-color: rgba(0, 0, 0, .2);
+    background-color: rgba(0, 0, 0, 0);
   }
   
   .carousel-button:focus {
-    outline: 1px solid black;
+    outline: 0px solid black;
   }
   
   .carousel-button.prev {
