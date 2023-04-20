@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>vyvv</title>
     <link rel="stylesheet" href="resources\css\style.css">
+    
 </head>
 
 <body>
-
     <header id="headerLinks">
         <a href="" class="logo"> vyvv
         </a>
@@ -17,7 +17,7 @@
             <a onClick="return scrollSmoothTo('aboutsection');" class="center desktop links">About</a>
             <a onClick="return scrollSmoothTo('strategysection');" class="center desktop links">Strategy</a>
             <a onClick="return scrollSmoothTo('researchsection');" class="center desktop links">Research</a>
-            <a onClick="return scrollSmoothTo('portfoliosection');" class="center desktop links">Portfolio</a>
+            <a onClick="return scrollSmoothTo('projectssection');" class="center desktop links">Projects</a>
             <a onClick="return scrollSmoothTo('partnersection');" class="center desktop links">Partner</a>
             <a onClick="return scrollSmoothTo('contactsection');" class="center desktop links">Contact</a>
 
@@ -39,7 +39,7 @@
         <a onClick="return scrollSmoothTo('aboutsection');">About</a>
         <a onClick="return scrollSmoothTo('strategysection');">Strategy</a>
         <a onClick="return scrollSmoothTo('researchsection');">Research</a>
-        <a onClick="return scrollSmoothTo('portfoliosection');">Portfolio</a>
+        <a onClick="return scrollSmoothTo('projectssection');">Projects</a>
         <a onClick="return scrollSmoothTo('partnersection');">Partner</a>
         <a onClick="return scrollSmoothTo('contactsection');">Contact</a>
         <a href=""></a>
@@ -54,21 +54,38 @@
     </aside>
 
 
-    <section style="background-image: url('resources/images/img.jpg');" class="active" id="aboutsection">
+
+    <section style="background-image: url();" class="active" id="aboutsection">
+
         <div class="content">
             <h1></h1>
-            <p>text1 <a href="">link1</a></p>
+            <p>test<a onClick="return scrollSmoothTo('projectssection');"></a> test</p>
             <div class="buttons">
-                <a href="">Learn More</a>
-                <a href="">Contact</a>
+                <a>Projects</a>
+                <a>Contact</a>
             </div>
         </div>
     </section>
 
-    <section style="background-image: url('resources/images/img.jpg')" id="strategysection">
+    <section style="background-image: url()" id="strategysection">
+
+        <div class="carousel" data-carousel>
+            <button class="carousel-button prev" data-carousel-button="prev">&#8249;</button>
+            <button class="carousel-button next" data-carousel-button="next">&#8250;</button>
+            <ul data-slides>
+              <li class="slide" data-active>
+                <img src="" alt="Image #1">
+              </li>
+              <li class="slide">
+                <img src="" alt="Image #2">
+              </li>
+            </ul>
+          </div>
+
+
         <div class="content">
             <h1>Strategy</h1>
-            <p>text1 <a href="">link1</a></p>
+            <p> <a href="">link1</a></p>
             <div class="buttons">
                 <a href="">Learn More</a>
                 <a href="">Contact</a>
@@ -76,7 +93,21 @@
         </div>
     </section>
 
-    <section style="background-image: url('resources/images/img.jpg')" id="researchsection">
+    <section style="background-image: url()" id="researchsection">
+
+        <div class="carousel" data-carousel>
+            <button class="carousel-button prev" data-carousel-button="prev">&#8249;</button>
+            <button class="carousel-button next" data-carousel-button="next">&#8250;</button>
+            <ul data-slides>
+              <li class="slide" data-active>
+                <img src="" alt="Image #1">
+              </li>
+              <li class="slide">
+                <img src="" alt="Image #2">
+              </li>
+            </ul>
+          </div>
+
         <div class="content">
             <h1>Research</h1>
             <p>text1 <a href="">link1</a></p>
@@ -87,9 +118,24 @@
         </div>
     </section>
 
-    <section style="background-image: url('resources/images/img.jpg')" id="portfoliosection">
+    <section style="background-image: url()" id="projectssection">
+
+        <div class="carousel" data-carousel>
+            <button class="carousel-button prev" data-carousel-button="prev">&#8249;</button>
+            <button class="carousel-button next" data-carousel-button="next">&#8250;</button>
+            <ul data-slides>
+              <li class="slide" data-active>
+                <img src="" alt="Image #1">
+              </li>
+              <li class="slide">
+                <img src="" alt="Image #2">
+              </li>
+            </ul>
+          </div>
+
+
         <div class="content">
-            <h1>Portfolio</h1>
+            <h1>Projects</h1>
             <p>text1 <a href="">link1</a></p>
             <div class="buttons">
                 <a href="">Learn More</a>
@@ -98,29 +144,46 @@
         </div>
     </section>
 
-    <section style="background-image: url('resources/images/img.jpg')" id="partnersection">
+    <section style="background-image: url()" id="partnersection">
+
+        <div class="carousel" data-carousel>
+            <button class="carousel-button prev" data-carousel-button="prev">&#8249;</button>
+            <button class="carousel-button next" data-carousel-button="next">&#8250;</button>
+            <ul data-slides>
+              <li class="slide" data-active>
+                <img src="" alt="Image #1">
+              </li>
+              <li class="slide">
+                <img src="" alt="Image #2">
+              </li>
+            </ul>
+          </div>
+
         <div class="content">
             <h1>Partner</h1>
             <p>text1 <a href="">link1</a></p>
             <div class="buttons">
-                <a href="">Learn More</a>
+                <a>Learn More</a>
                 <a href="">Contact</a>
             </div>
         </div>
     </section>
 
-    <section style="background-image: url('resources/images/img.jpg')" id="contactsection">
+    <section style="background-image: url()" id="contactsection">
+        
         <div class="content">
             <h1>Contact</h1>
             <p>text1 <a href="">link1</a></p>
             <div class="buttons">
-                <a href="">Learn More</a>
-                <a href="">Contact</a>
+                <a onClick="return scrollSmoothTo('projectssection');">Projects</a>
+                <a onClick="return scrollSmoothTo('contactsection');">Contact</a>
             </div>
         </div>
     </section>
 
     <script src="nav.js"></script>
     <script src="scroll.js"></script>
+    <script src="corousel.js"></script>
 </body>
 </html>
+
