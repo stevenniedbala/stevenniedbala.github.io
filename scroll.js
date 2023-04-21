@@ -1,37 +1,40 @@
-document.lastScrollPosition = 0;
-document.lastCentered = 0;
-document.onWayTo = null;
+// Get the sections on the page
+const sections = [...document.querySelectorAll("section")];
 
+// Set a variable to track the current scroll position
+let currentScrollPosition = 0;
+
+// Add an event listener for the scroll event
 document.addEventListener("scroll", () => {
-  const direction =
-    window.pageYOffset - document.lastScrollPosition > 0 ? "down" : "up";
-  const sections = [...document.querySelectorAll("section")];
 
-  if (document.onWayTo === null) {
-    const destIndex =
-      direction === "up"
-        ? document.lastCentered - 1
-        : document.lastCentered + 1;
-    if (destIndex >= 0 && destIndex < sections.length) {
-      console.log({ destIndex, direction });
-      document.onWayTo = destIndex;
-      window.scroll(0, sections[destIndex].offsetTop);
+  // Get the new scroll position
+  const newScrollPosition = window.pageYOffset;
+
+  // Iterate over the sections
+  for (let i = 0; i < sections.length; i++) {
+
+    // Get the top position of the section
+    const sectionTopPosition = sections[i].offsetTop;
+
+    // If the new scroll position is greater than or equal to the top position of the section
+    if (newScrollPosition >= sectionTopPosition) {
+
+      // Add the "active" class to the section
+      sections[i].className = "active";
+
+      // Remove the "active" class from all sections that are not currently visible
+      for (let j = 0; j < sections.length; j++) {
+        if (i !== j && newScrollPosition >= sections[j].offsetTop) {
+          sections[j].className = "";
+        }
+      }
+    } else if (newScrollPosition < sections[i].offsetTop && sections[i].className === "active") {
+      sections[i].className = "";
     }
   }
 
-  sections.forEach((section, index) => {
-    if (window.pageYOffset === section.offsetTop) {
-      document.lastCentered = index;
-      section.className = "active";
-      if (document.onWayTo === index) {
-        document.onWayTo = null;
-      }
-    } else {
-      section.className = "";
-    }
-  });
-
-  document.lastScrollPosition = window.pageYOffset;
+  // Set the current scroll position to the new scroll position
+  currentScrollPosition = newScrollPosition;
 });
 
 function scrollSmoothTo(elementId) {
