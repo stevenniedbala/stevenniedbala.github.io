@@ -14,7 +14,7 @@ document.addEventListener("scroll", () => {
   for (let i = 0; i < sections.length; i++) {
 
     // If the new scroll position is greater than or equal to the top of the current section
-    if (newScrollPosition >= sections[i].offsetTop && newScrollPosition < sections[i].offsetTop + (sections[i].clientHeight / 2)) {
+    if (newScrollPosition >= sections[i].offsetTop && newScrollPosition < sections[i].offsetTop + (sections[i].clientHeight / 10)) {
 
       // Remove the "active" class from all sections
       for (let j = 0; j < sections.length; j++) {
