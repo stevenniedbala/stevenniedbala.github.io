@@ -36,6 +36,7 @@ a.logo{
 }
 header a{
     color:inherit;
+    z-index: 5;
 }
 header nav a{
     text-decoration:none;
