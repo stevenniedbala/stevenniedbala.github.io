@@ -13,28 +13,21 @@ document.addEventListener("scroll", () => {
   // Iterate over the sections
   for (let i = 0; i < sections.length; i++) {
 
-    // Get the top position of the section
-    const sectionTopPosition = sections[i].offsetTop;
+    // If the new scroll position is greater than or equal to the top of the current section
+    if (newScrollPosition >= sections[i].offsetTop && newScrollPosition < sections[i].offsetTop + (sections[i].clientHeight / 2)) {
 
-    // If the new scroll position is greater than or equal to the top position of the section
-    if (newScrollPosition >= sectionTopPosition) {
-
-      // Add the "active" class to the section
-      sections[i].className = "active";
-
-      // Remove the "active" class from all sections that are not currently visible
+      // Remove the "active" class from all sections
       for (let j = 0; j < sections.length; j++) {
-        if (i !== j && newScrollPosition >= sections[j].offsetTop) {
-          sections[j].className = "";
-        }
+        sections[j].classList.remove("active");
       }
-    } else if (newScrollPosition < sections[i].offsetTop && sections[i].className === "active") {
-      sections[i].className = "";
+
+      // Add the "active" class to the current section
+      sections[i].classList.add("active");
+    } else {
+      // If the new scroll position is less than the top of the current section or greater than or equal to the bottom of the current section, remove the "active" class from the current section
+      sections[i].classList.remove("active");
     }
   }
-
-  // Set the current scroll position to the new scroll position
-  currentScrollPosition = newScrollPosition;
 });
 
 function scrollSmoothTo(elementId) {
