@@ -16,9 +16,9 @@
         </a>
         <nav class="center desktop">
             <a onClick="return scrollSmoothTo('aboutsection');" class="center desktop links">About</a>
+            <a onClick="return scrollSmoothTo('projectssection');" class="center desktop links">Projects</a>
             <a onClick="return scrollSmoothTo('strategysection');" class="center desktop links">Strategy</a>
             <a onClick="return scrollSmoothTo('researchsection');" class="center desktop links">Research</a>
-            <a onClick="return scrollSmoothTo('projectssection');" class="center desktop links">Projects</a>
             <a onClick="return scrollSmoothTo('partnersection');" class="center desktop links">Partner</a>
             <a onClick="return scrollSmoothTo('contactsection');" class="center desktop links">Contact</a>
 
@@ -38,9 +38,9 @@
         <button class="close">&times;</button>
         <div class="asidelinksclose">
         <a onClick="return scrollSmoothTo('aboutsection');">About</a>
+        <a onClick="return scrollSmoothTo('projectssection');">Projects</a>
         <a onClick="return scrollSmoothTo('strategysection');">Strategy</a>
         <a onClick="return scrollSmoothTo('researchsection');">Research</a>
-        <a onClick="return scrollSmoothTo('projectssection');">Projects</a>
         <a onClick="return scrollSmoothTo('partnersection');">Partner</a>
         <a onClick="return scrollSmoothTo('contactsection');">Contact</a>
         <a href=""></a>
@@ -64,6 +64,32 @@
             <div class="buttons">
                 <a>Projects</a>
                 <a>Contact</a>
+            </div>
+        </div>
+    </section>
+    
+        <section style="background-image: url()" id="projectssection">
+
+        <div class="carousel" data-carousel>
+            <button class="carousel-button prev" data-carousel-button="prev">&#8249;</button>
+            <button class="carousel-button next" data-carousel-button="next">&#8250;</button>
+            <ul data-slides>
+              <li class="slide" data-active>
+                <img src="https://source.unsplash.com/umAXneH4GhA" alt="Image #1">
+              </li>
+              <li class="slide">
+                <img src="" alt="Image #2">
+              </li>
+            </ul>
+          </div>
+
+
+        <div class="content">
+            <h1>Projects</h1>
+            <p>text1 <a href="">link1</a></p>
+            <div class="buttons">
+                <a href="">Learn More</a>
+                <a href="">Contact</a>
             </div>
         </div>
     </section>
@@ -119,31 +145,7 @@
         </div>
     </section>
 
-    <section style="background-image: url()" id="projectssection">
 
-        <div class="carousel" data-carousel>
-            <button class="carousel-button prev" data-carousel-button="prev">&#8249;</button>
-            <button class="carousel-button next" data-carousel-button="next">&#8250;</button>
-            <ul data-slides>
-              <li class="slide" data-active>
-                <img src="https://source.unsplash.com/umAXneH4GhA" alt="Image #1">
-              </li>
-              <li class="slide">
-                <img src="" alt="Image #2">
-              </li>
-            </ul>
-          </div>
-
-
-        <div class="content">
-            <h1>Projects</h1>
-            <p>text1 <a href="">link1</a></p>
-            <div class="buttons">
-                <a href="">Learn More</a>
-                <a href="">Contact</a>
-            </div>
-        </div>
-    </section>
 
     <section style="background-image: url()" id="partnersection">
 
@@ -176,7 +178,7 @@
             <h1>Contact</h1>
             <p>617-299-6676 <a href="">contact@vyvv.com</a></p>
             <div class="buttons">
-                <a onClick="return scrollSmoothTo('projectssection');">Projects</a>
+                <a onClick="return scrollSmoothToNextElement();">Learn More</a>
                 <a onClick="return scrollSmoothTo('contactsection');">Contact</a>
             </div>
         </div>
