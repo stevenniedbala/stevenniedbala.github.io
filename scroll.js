@@ -47,11 +47,11 @@ function scrollSmoothToNextElement() {
   // Scroll to the next element
   nextElement.scrollIntoView({ block: "start", behavior: "smooth" });
 
-  // Remove the "active" class from the current element
-  currentElement.classList.remove('active');
+  // Remove the "active" class from the current element (not needed)
+  //currentElement.classList.remove('active');
 
-  // Add the "active" class to the next element
-  nextElement.classList.add('active');
+  // Add the "active" class to the next element (not needed)
+  //nextElement.classList.add('active');
 
   return false; // Prevents the default behavior of the <a> tag
 }
