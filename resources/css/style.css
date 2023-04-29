@@ -44,9 +44,11 @@ header nav a{
 }
 header nav.center{
     text-align: center;
+    padding: 10px;
 }
 header nav.right{
     text-align:right;
+    padding: 10px;
 }
 
 section{
