@@ -6,7 +6,6 @@
 body{
     color:#171a20;
     font-family: sans-serif;
-    overflow: hidden;
 }
 html{
     scroll-behavior: smooth;
@@ -194,7 +193,7 @@ aside button.close{
 
 
   .carousel {
-    width: 100vw;
+    width: inherit;
     height: 100vh;
     position: relative;
   }
