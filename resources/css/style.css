@@ -109,6 +109,44 @@ section .buttons{
     }
 }
 
+
+
+#aboutsection{
+    opacity: 1;
+}
+
+#strategysection{
+    opacity: 1;
+}
+
+#researchsection{
+    opacity: 1;
+}
+
+#projectssection{
+    opacity: 1;
+}
+
+#partnersection{
+    opacity: 1;
+}
+
+#contactsection{
+    opacity: 1;
+
+}
+
+#contactsection .buttons{
+    opacity: 0;
+}
+
+
+
+
+
+
+
+
 aside{
     position:fixed;
     transition: right .4s ease;
