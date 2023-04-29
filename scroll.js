@@ -30,7 +30,28 @@ document.addEventListener("scroll", () => {
   }
 });
 
+//scrollsmoothTo
 function scrollSmoothTo(elementId) {
   var element = document.getElementById(elementId);
   element.scrollIntoView({ block: "start", behavior: "smooth" });
+}
+
+//scroll to next elemen. Had to add to temporarly fix section button issue
+function scrollSmoothToNextElement() {
+  // Get the current element
+  const currentElement = document.querySelector(':target') || document.querySelector('.active');
+
+  // Get the next element
+  const nextElement = currentElement.nextElementSibling;
+
+  // Scroll to the next element
+  nextElement.scrollIntoView({ block: "start", behavior: "smooth" });
+
+  // Remove the "active" class from the current element
+  currentElement.classList.remove('active');
+
+  // Add the "active" class to the next element
+  nextElement.classList.add('active');
+
+  return false; // Prevents the default behavior of the <a> tag
 }
