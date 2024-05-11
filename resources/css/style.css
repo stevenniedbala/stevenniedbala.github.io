@@ -22,7 +22,7 @@ html{
 
 .site-wrapper {
     position: relative;
-    max-width: 95%;  /* Set a max-width if you want to restrict the site's width */
+    max-width: 100%;  /* Set a max-width if you want to restrict the site's width */
     margin: auto;       /* Centers the site-wrapper in the page */
     box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Optional: adds a shadow for better visibility */
     border-radius: 25px; /* Adjust the radius to your liking */
@@ -39,7 +39,7 @@ header{
     position: fixed;
     top:0;
     z-index:4;
-    width: 95%;
+    width: 100%;
 }
 a.logo{
     height:12px;
