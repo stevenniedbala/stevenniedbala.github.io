@@ -22,19 +22,6 @@ html{
 
 
 
-.site-wrapper {
-    position: relative;
-    max-width: 80%;  /* Set a max-width if you want to restrict the site's width */
-    margin: auto;       /* Centers the site-wrapper in the page */
-    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Optional: adds a shadow for better visibility */
-    border-radius: 25px; /* Adjust the radius to your liking */
-    overflow: hidden;    /* Ensures no child content leaks outside the rounded corners */
-    min-height: 90vh;   /* Optional: makes the wrapper at least as tall as the viewport */
-}
-
-
-
-
 header{
     display: grid;
     grid-template-columns: auto 1fr auto;
