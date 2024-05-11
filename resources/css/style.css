@@ -20,6 +20,16 @@ html{
     }
 }
 
+.site-wrapper {
+    position: relative;
+    max-width: 95%;  /* Set a max-width if you want to restrict the site's width */
+    margin: auto;       /* Centers the site-wrapper in the page */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Optional: adds a shadow for better visibility */
+    border-radius: 25px; /* Adjust the radius to your liking */
+    overflow: hidden;    /* Ensures no child content leaks outside the rounded corners */
+    min-height: 90vh;   /* Optional: makes the wrapper at least as tall as the viewport */
+}
+
 
 
 header{
@@ -29,7 +39,7 @@ header{
     position: fixed;
     top:0;
     z-index:4;
-    width: 80%;
+    width: 95%;
 }
 a.logo{
     height:12px;
@@ -63,7 +73,7 @@ section .content{
     opacity:0;
     z-index:3;
     position:fixed;
-    width: 100%;
+    width: 95%;
     top:0;
     transition: opacity .3s ease;
     height:100vh;
