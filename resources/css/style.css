@@ -283,10 +283,10 @@ aside button.close{
 
   .carousel video {
     width: 100%;  /* Ensures the video fills the slide width */
-    height: auto; /* Maintains aspect ratio */
+    /*height: auto; /* Maintains aspect ratio */
     min-height: 100%; /* Ensures the video covers the slide vertically */
     object-fit: cover; /* Ensures the video covers the slide area without stretching */
-    position: absolute;
+    /*position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); /* Centers the video perfectly within the slide */
