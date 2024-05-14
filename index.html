@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>vyvv</title>
+
+    <!-- Favicon for most browsers -->
+    <link rel="icon" type="image/png" sizes="32x32" href="resources\images\IMG_7462.png">
+    
+    <!-- Optional: Apple Touch Icon for iOS and other high-resolution devices -->
+    <!--<link rel="apple-touch-icon" sizes="180x180" href="path/to/your/apple-touch-icon.png"> -->
+
+    <!-- Optional: Favicon for IE (legacy) -->
+    <!--<link rel="shortcut icon" href="path/to/your/favicon.ico"> -->
+
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="resources\css\style.css">
     
@@ -55,13 +65,17 @@
         
     </aside>
 
+<!-- Loading Screen -->
+<div id="loadingScreen" class="loading-screen">
+  Loading...
+</div>
 
 
     <section style="background-image: url();" class="active" id="aboutsection">
 
       <div class="carousel" data-carousel>
-        <button class="carousel-button prev" data-carousel-button="prev">&#8249;</button>
-        <button class="carousel-button next" data-carousel-button="next">&#8250;</button>
+        <button class="carousel-button prev" data-carousel-button="prev"></button>
+        <button class="carousel-button next" data-carousel-button="next"></button>
         <ul data-slides>
           <li class="slide" data-active>
             <video playsinline autoplay muted loop>
@@ -76,8 +90,8 @@
     </div>
 
         <div class="content">
-            <h1>... </h1>
-            <p>Luxury Rentals One Flip At A Time<a onClick="return scrollSmoothTo('projectssection');"></a></p>
+            <h1></h1>
+            <p><a onClick="return scrollSmoothTo('projectssection');"></a></p>
             <div class="buttons">
                 <a>Projects</a>
                 <a>Contact</a>
@@ -103,7 +117,7 @@
 
         <div class="content">
             <h1>Projects</h1>
-            <p> <a href="">Portfolio</a></p>
+            <p> <a href="https://www.google.com">Portfolio</a></p>
             <div class="buttons">
                 <a href="">Learn More</a>
                 <a href="">Contact</a>
@@ -204,7 +218,7 @@
     <script src="nav.js"></script>
     <script src="scroll.js"></script>
     <script src="corousel.js"></script>
+    <script src="loadScreen.js"></script>
 </body>
 </html>
-
 
