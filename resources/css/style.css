@@ -99,6 +99,20 @@ header nav.right{
 
 
 
+
+#mainVideo::-webkit-media-controls {
+    display: none !important;
+}
+
+#mainVideo::-webkit-media-controls-start-playback-button {
+    display: none !important;
+}
+
+
+
+
+
+
 .loading-screen {
     position: fixed;
     top: 0;
