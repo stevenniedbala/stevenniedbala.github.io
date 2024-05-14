@@ -111,7 +111,6 @@ header nav.right{
     align-items: center;
     font-size: 20px;
     z-index: 1000; /* High z-index to cover other content */
-    display: none; /* Ensure this is not set to block by default */
 }
 
 
