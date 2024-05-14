@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     const loadingScreen = document.getElementById('loadingScreen');
-    
-    // Directly hide the loading screen after a delay to test functionality
+
     setTimeout(() => {
-        console.log("Timeout reached, hiding loading screen.");
-        loadingScreen.style.display = 'none';
-    }, 5000); // Adjust time as necessary
+        loadingScreen.style.display = 'none'; // Hide the loading screen
+        console.log("Loading screen hidden after 3 seconds.");
+    }, 2500); // 3000 milliseconds = 3 seconds
 });
