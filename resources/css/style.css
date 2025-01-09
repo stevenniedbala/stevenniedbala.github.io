@@ -339,8 +339,8 @@ section {
     text-align: center;
     position: relative;
     z-index: 2; /* Ensure content appears above decorative elements */
-    margin-bottom: 10rem; /* Maintain spacing below content */
-    margin-top: -10rem; /* Move content higher */
+    margin-bottom: 7.5rem; /* Maintain spacing below content */
+    margin-top: -7.5rem; /* Move content higher */
 }
 
 /* Intro Heading and Text */
@@ -407,7 +407,7 @@ section {
     bottom: -50px;
     left: 40%; /* Adjusted for balance */
     width: 200px;
-    height: 300px;
+    height: 350px;
     background: linear-gradient(to right, #ff6f61, #007BFF);; /* Subtle light gray */
     z-index: 1;
     animation: floatReverse 5s ease-in-out infinite;
@@ -419,7 +419,7 @@ section {
     bottom: -50px;
     right: 40%; /* Adjusted for balance */
     width: 250px;
-    height: 380px;
+    height: 430px;
     background: rgba(255, 255, 255, 0.08); /* Even subtler light gray */
     z-index: 1;
     animation: float 6s ease-in-out infinite;
@@ -432,7 +432,7 @@ section {
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Offset to center */
     width: 220px;
-    height: 220px;
+    height: 270px;
     background: linear-gradient(to right, #ff6f61, #007BFF);; /* Subtle white */
     z-index: 1;
     animation: floatReverse 5.5s ease-in-out infinite; /* Same animation as others */
