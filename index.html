@@ -22,14 +22,13 @@
 
 <body>
     <header id="headerLinks">
-        <a href="" class="logo">
+        <a href="#" class="logo" id="logo">
           <img src="resources\images\IMG_7462.png" alt="Home">
         </a>
         <nav class="center desktop">
             <a onClick="return scrollSmoothTo('aboutsection');" class="center desktop links">About</a>
             <a onClick="return scrollSmoothTo('projectssection');" class="center desktop links">Projects</a>
             <a onClick="return scrollSmoothTo('strategysection');" class="center desktop links">Strategy</a>
-            <a onClick="return scrollSmoothTo('researchsection');" class="center desktop links">Markets</a>
             <a onClick="return scrollSmoothTo('partnersection');" class="center desktop links">Partner</a>
             <a onClick="return scrollSmoothTo('contactsection');" class="center desktop links">Contact</a>
 
@@ -51,7 +50,6 @@
         <a onClick="return scrollSmoothTo('aboutsection');">About</a>
         <a onClick="return scrollSmoothTo('projectssection');">Projects</a>
         <a onClick="return scrollSmoothTo('strategysection');">Strategy</a>
-        <a onClick="return scrollSmoothTo('researchsection');">Markets</a>
         <a onClick="return scrollSmoothTo('partnersection');">Partner</a>
         <a onClick="return scrollSmoothTo('contactsection');">Contact</a>
         <a href=""></a>
@@ -65,160 +63,147 @@
         
     </aside>
 
-<!-- Loading Screen -->
-<div id="loadingScreen" class="loading-screen">
-  Loading...
-</div>
 
 
-    <section style="background-image: url();" class="active" id="aboutsection">
 
-      <div class="carousel" data-carousel>
-        <button class="carousel-button prev" data-carousel-button="prev"></button>
-        <button class="carousel-button next" data-carousel-button="next"></button>
-        <ul data-slides>
-          <li class="slide" data-active>
-            <video id="mainVideo" playsinline autoplay muted loop preload="auto">
-              <source src="resources\images\" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </li>
-          <li class="slide">
-            <img src="" alt="Image #2">
-          </li>
-        </ul>
+    <!-- Section 1: About -->
+    <section id="aboutsection">
+      <div class="content about-content">
+          <h1 class="about-heading">Rebuilding communities</h1>
+          <p class="about-text">One Flip At A Time</p>
+          <div class="buttons about-buttons">
+              <a href="#projectssection">Learn more</a>
+              <a href="#contactsection">Contact Us</a>
+          </div>
+      </div>
+  </section>
+
+  <!-- Section 2: Projects -->
+  <section id="projectssection" style="background-image: url('resources/images/projects.jpg');">
+    <div class="content projects-content">
+        <h1 class="projects-heading">Recent Projects</h1>
+        <p class="projects-text">Explore some of our recent developments.</p>
+
+        <div class="projects-grid">
+            <div class="project-box">
+                <img src="resources/images/project1.jpg" alt="Project 1" class="project-image">
+                <h2>1 Hockanum</h2>
+                <p>12-unit development project</p>
+                <a href="project1.html" class="project-link">View Details</a>
+            </div>
+            <div class="project-box">
+                <img src="resources/images/project2.jpg" alt="Project 2" class="project-image">
+                <h2>Pleasant Street</h2>
+                <p>7-unit residential project</p>
+                <a href="project2.html" class="project-link">View Details</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- Section 3: Strategy -->
+  <section id="strategysection" style="background-image: url('resources/images/strategy.jpg');">
+    <div class="content strategy-content">
+        <h1 class="strategy-heading">Our Strategy</h1>
+        <p class="strategy-text">Principles that guide our investments and drive our success.</p>
+        <div class="strategy-grid">
+            <div class="strategy-box">
+                <h2>Prime Location</h2>
+                <p>Focus on areas with strong population growth, job opportunities, and access to transportation and amenities. Emerging neighborhoods offer higher returns by attracting renters seeking affordability and convenience.</p>
+            </div>
+            <div class="strategy-box">
+                <h2>Value-Add</h2>
+                <p>Invest in properties with operational inefficiencies or physical upgrades opportunities. Enhancements like modern finishes, better amenities, or energy-efficient systems can increase rents and boost asset value.</p>
+            </div>
+            <div class="strategy-box">
+                <h2>Market Demand</h2>
+                <p>Target markets with growing renter populations and housing shortages. Align with trends like eco-friendly living, technology integration, and flexible lease options to stay competitive.</p>
+            </div>
+            <div class="strategy-box">
+                <h2>Strong Financials</h2>
+                <p>Prioritize deals with solid cash flow, conservative projections, and risk management plans. Ensure metrics like IRR, DSCR, and contingency budgets align with investment goals.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- Section 4: Partner -->
+  <section id="partnersection" style="background-image: url('resources/images/partner.jpg');">
+    <div class="content partner-content">
+        <h1 class="partner-heading">Partner with Us</h1>
+        <p class="partner-text">Learn how we collaborate to achieve mutual success. Explore our FAQ to understand our partnership process.</p>
+
+        <!-- FAQ Section -->
+        <div class="faq">
+            <div class="faq-item">
+                <button class="faq-question">What is your partnership model?</button>
+                <div class="faq-answer">
+                    <p>We collaborate with businesses to achieve shared growth through innovative strategies tailored to mutual goals.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">How do I become a partner?</button>
+                <div class="faq-answer">
+                    <p>Contact us via email or phone to discuss your goals and explore how we can work together.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">What industries do you work with?</button>
+                <div class="faq-answer">
+                    <p>We specialize in technology, finance, and real estate, but we’re open to collaborating with other industries.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">What support do you provide partners?</button>
+                <div class="faq-answer">
+                    <p>We offer strategic guidance, technical resources, and marketing support to ensure a successful partnership.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Can I partner with you as a startup?</button>
+                <div class="faq-answer">
+                    <p>Absolutely! We love working with startups to help them grow and achieve their potential.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- Section 5: Contact -->
+  <section id="contactsection" style="background-image: url('resources/images/contact.jpg');">
+    <div class="content contact-content">
+        <h1 class="contact-heading">Contact</h1>
+        <p class="contact-text"></p>
+        <div class="contact-details">
+            <p>Email: <a href="mailto:contact@vyvv.com">contact@vyvv.com</a></p>
+            <p>Phone: <a href="tel:+16172996676">+1 (617) 299-6676</a></p>
+        </div>
     </div>
 
-        <div class="content">
-            <h1></h1>
-            <p><a onClick="return scrollSmoothTo('projectssection');"></a></p>
-            <div class="buttons">
-                <a>Projects</a>
-                <a>Contact</a>
-            </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#aboutsection">About</a>
+            <a href="#projectssection">Projects</a>
+            <a href="#strategysection">Strategy</a>
+            <a href="#contactsection">Contact</a>
+            <a href="login.html">Login</a>
+            <a href="store.html">Store</a>
+            <a href="careers.html">Careers</a>
         </div>
-    </section>
+        <div class="footer-social">
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        </div>
+        <p class="footer-copyright">© 2024 Vyvv. All Rights Reserved.</p>
+    </footer>
+</section>
+
+
+  <script src="nav.js"></script>
+  <script src="scroll.js"></script>
+
     
-    <section style="background-image: url()" id="projectssection">
-
-        <div class="carousel" data-carousel>
-            <button class="carousel-button prev" data-carousel-button="prev">&#8249;</button>
-            <button class="carousel-button next" data-carousel-button="next">&#8250;</button>
-            <ul data-slides>
-              <li class="slide" data-active>
-                <img src="" alt="Image #1">
-              </li>
-              <li class="slide">
-                <img src="" alt="Image #2">
-              </li>
-            </ul>
-          </div>
-
-
-        <div class="content">
-            <h1>Projects</h1>
-            <p> <a href="https://www.google.com">Portfolio</a></p>
-            <div class="buttons">
-                <a href="">Learn More</a>
-                <a href="">Contact</a>
-            </div>
-        </div>
-    </section>
-
-    <section style="background-image: url()" id="strategysection">
-
-        <div class="carousel" data-carousel>
-            <button class="carousel-button prev" data-carousel-button="prev">&#8249;</button>
-            <button class="carousel-button next" data-carousel-button="next">&#8250;</button>
-            <ul data-slides>
-              <li class="slide" data-active>
-                <img src="" alt="Image #1">
-              </li>
-              <li class="slide">
-                <img src="https://source.unsplash.com/dEmyi-XR88w" alt="Image #2">
-              </li>
-            </ul>
-          </div>
-
-
-        <div class="content">
-            <h1>Strategy</h1>
-            <p><a href=""></a></p>
-            <div class="buttons">
-                <a href="">Learn More</a>
-                <a href="">Contact</a>
-            </div>
-        </div>
-    </section>
-
-    <section style="background-image: url()" id="researchsection">
-
-        <div class="carousel" data-carousel>
-            <button class="carousel-button prev" data-carousel-button="prev">&#8249;</button>
-            <button class="carousel-button next" data-carousel-button="next">&#8250;</button>
-            <ul data-slides>
-              <li class="slide" data-active>
-                <img src="" alt="Image #1">
-              </li>
-              <li class="slide">
-                <img src="" alt="Image #2">
-              </li>
-            </ul>
-          </div>
-
-        <div class="content">
-            <h1>Markets</h1>
-            <p> <a href=""></a></p>
-            <div class="buttons">
-                <a href="">Learn More</a>
-                <a href="">Contact</a>
-            </div>
-        </div>
-    </section>
-
-
-
-    <section style="background-image: url()" id="partnersection">
-
-        <div class="carousel" data-carousel>
-            <button class="carousel-button prev" data-carousel-button="prev">&#8249;</button>
-            <button class="carousel-button next" data-carousel-button="next">&#8250;</button>
-            <ul data-slides>
-              <li class="slide" data-active>
-                <img src="" alt="Image #1">
-              </li>
-              <li class="slide">
-                <img src="" alt="Image #2">
-              </li>
-            </ul>
-          </div>
-
-        <div class="content">
-            <h1>Partner</h1>
-            <p> <a href="">FAQ</a></p>
-            <div class="buttons">
-                <a>Learn More</a>
-                <a href="">Contact</a>
-            </div>
-        </div>
-    </section>
-
-    <section style="background-image: url()" id="contactsection">
-        
-        <div class="content">
-            <h1>Contact</h1>
-            <p>617-299-6676 <a href="">contact@vyvv.com</a></p>
-            <div class="buttons">
-               <a onClick="return scrollSmoothToNextElement();">Learn More</a>
-               <a onClick="return scrollSmoothTo('contactsection');">Contact</a>
-            </div>
-        </div>
-    </section>
-
-    <script src="nav.js"></script>
-    <script src="scroll.js"></script>
-    <script src="corousel.js"></script>
-    <script src="loadScreen.js"></script>
 </body>
 </html>
 
