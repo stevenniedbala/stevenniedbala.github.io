@@ -1,57 +1,112 @@
-// Get the sections on the page
-const sections = [...document.querySelectorAll("section")];
-
-// Set a variable to track the current scroll position
-let currentScrollPosition = 0;
-
-// Add an event listener for the scroll event
-document.addEventListener("scroll", () => {
-
-  // Get the new scroll position
-  const newScrollPosition = window.pageYOffset;
-
-  // Iterate over the sections
-  for (let i = 0; i < sections.length; i++) {
-
-    // If the new scroll position is greater than or equal to the top of the current section
-    if (newScrollPosition >= sections[i].offsetTop && newScrollPosition < sections[i].offsetTop + (sections[i].clientHeight / 5)) {
-
-      // Remove the "active" class from all sections
-      for (let j = 0; j < sections.length; j++) {
-        sections[j].classList.remove("active");
-      }
-
-      // Add the "active" class to the current section
-      sections[i].classList.add("active");
-    } else {
-      // If the new scroll position is less than the top of the current section or greater than or equal to the bottom of the current section, remove the "active" class from the current section
-      sections[i].classList.remove("active");
-    }
-  }
-});
-
-
 function scrollSmoothTo(elementId) {
   var element = document.getElementById(elementId);
   element.scrollIntoView({ block: "start", behavior: "smooth" });
 }
 
+// Function to handle fade-in and fade-out effect
+const handleScrollAnimation = () => {
+  const sections = document.querySelectorAll('section');
 
-function scrollSmoothToNextElement() {
-  // Get the current element
-  const currentElement = document.querySelector(':target') || document.querySelector('.active');
+  sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
-  // Get the next element
-  const nextElement = currentElement.nextElementSibling;
+      if (rect.top < windowHeight * 0.9 && rect.bottom > windowHeight * 0.1) {
+          if (!section.classList.contains('visible')) {
+              section.classList.add('visible');
+          }
+      } else {
+          if (section.classList.contains('visible')) {
+              section.classList.remove('visible');
+          }
+      }
+  });
+};
 
-  // Scroll to the next element
-  nextElement.scrollIntoView({ block: "start", behavior: "smooth" });
+// Attach event listeners
+document.addEventListener('scroll', handleScrollAnimation);
+window.addEventListener('load', handleScrollAnimation);
+window.addEventListener('resize', handleScrollAnimation);
 
-  // Remove the "active" class from the current element (not needed)
-  //currentElement.classList.remove('active');
+// Smooth scroll for internal links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+  });
+});
 
-  // Add the "active" class to the next element (not needed)
-  //nextElement.classList.add('active');
 
-  return false; // Prevents the default behavior of the <a> tag
-}
+
+// Flip logo upside down on click
+document.getElementById('logo').addEventListener('click', function (e) {
+  e.preventDefault(); // Prevent the default link action
+  this.classList.toggle('flipped'); // Toggle the 'flipped' class
+});
+
+// Track if the animation has already been triggered to prevent excessive flips
+let lastScrollTop = 0;
+let scrollTimeout;
+
+// Debounced scroll handler
+const handleScroll = () => {
+    const logo = document.getElementById('logo');
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > lastScrollTop) {
+        logo.classList.add('flipped'); // Flip logo when scrolling down
+    } else {
+        logo.classList.remove('flipped'); // Reset logo when scrolling up
+    }
+
+    lastScrollTop = currentScroll; // Update last scroll position
+};
+
+// Add scroll listener with debouncing
+window.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(handleScroll, 100); // Trigger handleScroll after 100ms delay
+});
+
+
+
+
+// FAQ Toggle Functionality
+document.querySelectorAll('.faq-question').forEach((button) => {
+  button.addEventListener('click', () => {
+      const faqItem = button.parentElement;
+
+      // Debug log
+      console.log('Toggling FAQ item:', faqItem);
+
+      // Close other open items
+      document.querySelectorAll('.faq-item').forEach((item) => {
+          if (item !== faqItem) {
+              item.classList.remove('open');
+          }
+      });
+
+      // Toggle the clicked item
+      faqItem.classList.toggle('open');
+  });
+});
+
+// Highlight the active link based on the visible section
+const updateActiveLink = () => {
+    const links = document.querySelectorAll('nav.center.desktop a');
+    const sections = document.querySelectorAll('section');
+
+    let index = sections.length;
+    while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
+
+    links.forEach((link) => link.classList.remove('active'));
+    if (links[index]) {
+        links[index].classList.add('active');
+    }
+};
+
+window.addEventListener('scroll', updateActiveLink);
+window.addEventListener('load', updateActiveLink);
