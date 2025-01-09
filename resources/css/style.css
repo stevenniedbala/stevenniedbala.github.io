@@ -339,8 +339,8 @@ section {
     text-align: center;
     position: relative;
     z-index: 2; /* Ensure content appears above decorative elements */
-    margin-bottom: 5rem; /* Maintain spacing below content */
-    margin-top: -5rem; /* Move content higher */
+    margin-bottom: 10rem; /* Maintain spacing below content */
+    margin-top: -10rem; /* Move content higher */
 }
 
 /* Intro Heading and Text */
