@@ -147,7 +147,7 @@ aside button.close{
     top:10px;
     right:10px;
     padding: 10px;
-    font-family: sans-serif;
+    font-family: 'M PLUS 1', sans-serif;
     font-weight:100;
     cursor:pointer;
 }
@@ -160,7 +160,7 @@ aside button.close{
     top:10px;
     right:10px;
     padding: 10px;
-    font-family: sans-serif;
+    font-family: 'M PLUS 1', sans-serif;
     font-weight:100;
     cursor:pointer;
 
@@ -971,7 +971,7 @@ section {
 
 .footer-links a,
 .footer-social a {
-    color: #007BFF;
+    color: #ddd;
     text-decoration: none;
     font-size: 1rem;
     transition: color 0.3s ease;
@@ -1005,5 +1005,4 @@ section {
         font-size: 0.9rem;
     }
 }
-
 
