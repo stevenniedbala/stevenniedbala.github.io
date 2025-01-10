@@ -497,7 +497,7 @@ section {
     /* Adjust Squares for Smaller Screens */
     #aboutsection::before {
         width: 120px;
-        height: 120px;
+        height: 170px;
         bottom: -30px; /* Move up slightly */
         left: 25%; /* Adjust position for smaller screens */
         animation: floatReverse 5s ease-in-out infinite; /* Retain animation */
@@ -505,7 +505,7 @@ section {
 
     #aboutsection::after {
         width: 150px;
-        height: 150px;
+        height: 200px;
         bottom: -30px; /* Move up slightly */
         right: 25%; /* Adjust position for smaller screens */
         animation: float 6s ease-in-out infinite; /* Retain animation */
