@@ -405,38 +405,38 @@ section {
 #aboutsection::before {
     content: '';
     position: absolute;
-    bottom: -50px;
-    left: 40%; /* Adjusted for balance */
+    bottom: -300px; /* Keep same position */
+    left: 40%;
     width: 200px;
-    height: 350px;
-    background: linear-gradient(to right, #ff6f61, #007BFF);; /* Subtle light gray */
+    height: 400px; /* Reduced from 800px */
+    background: linear-gradient(to right, #ff6f61, #007BFF);
     z-index: 1;
-    animation: floatReverse 5s ease-in-out infinite;
+    animation: floatReverse 9s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 }
 
 #aboutsection::after {
     content: '';
     position: absolute;
-    bottom: -50px;
-    right: 40%; /* Adjusted for balance */
+    bottom: -300px; /* Keep same position */
+    right: 40%;
     width: 250px;
-    height: 430px;
-    background: rgba(255, 255, 255, 0.08); /* Even subtler light gray */
+    height: 425px; /* Reduced from 850px */
+    background: rgba(255, 255, 255, 0.08);
     z-index: 1;
-    animation: float 6s ease-in-out infinite;
+    animation: float 11s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 }
 
 /* Middle Square */
 .middle-square {
     position: absolute;
-    bottom: -50px;
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Offset to center */
+    bottom: -300px; /* Keep same position */
+    left: 50%;
+    transform: translateX(-50%);
     width: 220px;
-    height: 270px;
-    background: linear-gradient(to right, #ff6f61, #007BFF);; /* Subtle white */
+    height: 375px; /* Reduced from 750px */
+    background: linear-gradient(to right, #ff6f61, #007BFF);
     z-index: 1;
-    animation: floatReverse 5.5s ease-in-out infinite; /* Same animation as others */
+    animation: floatReverse 10s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 }
 
 /* Animations */
@@ -464,19 +464,19 @@ section {
 
 @keyframes float {
     0%, 100% {
-        transform: translateY(-20px);
+        transform: translateY(0); /* Start/end position is lower */
     }
     50% {
-        transform: translateY(20px);
+        transform: translateY(-300px); /* Only move upward */
     }
 }
 
 @keyframes floatReverse {
     0%, 100% {
-        transform: translateY(20px);
+        transform: translateY(0); /* Start/end position is lower */
     }
     50% {
-        transform: translateY(-20px);
+        transform: translateY(-300px); /* Only move upward */
     }
 }
 
@@ -498,27 +498,40 @@ section {
     /* Adjust Squares for Smaller Screens */
     #aboutsection::before {
         width: 120px;
-        height: 190px;
-        bottom: -30px; /* Move up slightly */
-        left: 25%; /* Adjust position for smaller screens */
-        animation: floatReverse 5s ease-in-out infinite; /* Retain animation */
+        height: 500px;
+        bottom: -450px; /* Adjusted from -500px to -450px */
+        left: 25%;
     }
 
     #aboutsection::after {
         width: 150px;
-        height: 220px;
-        bottom: -30px; /* Move up slightly */
-        right: 25%; /* Adjust position for smaller screens */
-        animation: float 6s ease-in-out infinite; /* Retain animation */
+        height: 525px;
+        bottom: -450px; /* Adjusted from -500px to -450px */
+        right: 25%;
     }
 
     .middle-square {
         width: 150px;
-        height: 170px;
-        bottom: -30px; /* Move up slightly */
-        left: 50%;
-        transform: translateX(-50%);
-        animation: floatReverse 5.5s ease-in-out infinite; /* Retain animation */
+        height: 475px;
+        bottom: -450px; /* Adjusted from -500px to -450px */
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-200px);
+        }
+    }
+
+    @keyframes floatReverse {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-200px);
+        }
     }
 }
 
@@ -1004,4 +1017,3 @@ section {
         font-size: 0.9rem;
     }
 }
-
