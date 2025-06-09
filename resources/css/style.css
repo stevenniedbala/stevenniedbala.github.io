@@ -320,7 +320,7 @@ section {
 /* About Section Custom Styling */
 /* About Section */
 #aboutsection {
-    background: linear-gradient(to right, #121212, #black); /* Dark techy gradient */
+    background: linear-gradient(to right, #121212, black); /* Dark techy gradient */
     color: white;
     padding: 4rem 2rem;
     text-align: center;
@@ -404,7 +404,7 @@ section {
 /* futuristic container settings */
 #aboutsection {
   position: relative;
-  perspective: 1000px;
+  /*perspective: 1000px; */
   overflow-x: hidden;   /* prevent horizontal scroll on small screens */
 }
 
