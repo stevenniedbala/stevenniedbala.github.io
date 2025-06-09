@@ -502,6 +502,18 @@ section {
 /*        MOBILE (<768px)    */
 /* ========================= */
 @media (max-width: 768px) {
+    .about-heading {
+        font-size: 2.5rem;
+    }
+
+    .about-text {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
   /* left tower (~10 floors) */
   #aboutsection::before {
     left: 20%;
