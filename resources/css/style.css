@@ -631,7 +631,8 @@ section h1 {
     #aboutsection {
         min-height: auto;
         height: 100vh;
-        padding-top: 60px;
+        padding-top: 50px;
+        justify-content: flex-start;
     }
 
     .about-heading {
@@ -657,7 +658,8 @@ section h1 {
     }
 
     .neighborhood-container {
-        height: 55%;
+        height: 60%;
+        bottom: 10%;
     }
 }
 
