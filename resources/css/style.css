@@ -573,7 +573,7 @@ section h1 {
 .dog-leg-r { animation: stride-leg-r 0.35s ease-in-out 7.5s 20 forwards; }
 
 .about-heading {
-    font-size: 4rem;
+    font-size: clamp(2rem, 5vw, 3.2rem);
     font-weight: 600;
     margin-bottom: 0;
     text-transform: uppercase;
@@ -635,7 +635,7 @@ section h1 {
     }
 
     .about-heading {
-        font-size: 2rem;
+        font-size: 1.8rem;
         margin-bottom: 0.3rem;
     }
 
