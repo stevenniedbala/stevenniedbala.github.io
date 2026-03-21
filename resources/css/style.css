@@ -642,6 +642,16 @@ section h1 {
     .about-cta {
         margin-top: 0.8rem;
     }
+
+    .hero-group {
+        gap: 0;
+    }
+
+    .neighborhood-container {
+        width: 130%;
+        height: 35vh;
+        margin-top: -1rem;
+    }
 }
 
 /* ---- Reduced motion ---- */
