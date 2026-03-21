@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>vyvv</title>
 
     <!-- Favicon for most browsers -->
-    <link rel="icon" type="image/png" sizes="32x32" href="resources\images\browserlogo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="resources/images/browserlogo.png">
     
     <!-- Optional: Apple Touch Icon for iOS and other high-resolution devices -->
     <!--<link rel="apple-touch-icon" sizes="180x180" href="path/to/your/apple-touch-icon.png"> -->
@@ -15,15 +15,15 @@
     <!-- Optional: Favicon for IE (legacy) -->
     <!--<link rel="shortcut icon" href="path/to/your/favicon.ico"> -->
 
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="resources\css\style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="resources/css/style.css">
     
 </head>
 
 <body>
     <header id="headerLinks">
         <a href="#" class="logo" id="logo">
-          <img src="resources\images\IMG_7462.png" alt="Home">
+          <img src="resources/images/IMG_7462.png" alt="Home">
         </a>
         <nav class="center desktop">
             <a onClick="return scrollSmoothTo('aboutsection');" class="center desktop links">About</a>
@@ -36,7 +36,11 @@
         <nav class="right">
             <a href="" class="desktop"></a>
             <a href="" class="desktop"></a>
-            <a href="" id="menuBtn">Menu</a>
+            <button id="menuBtn" aria-label="Menu">
+                <span class="menu-line"></span>
+                <span class="menu-line menu-line-mid"></span>
+                <span class="menu-line"></span>
+            </button>
         </nav>
     </header>
 
@@ -69,19 +73,357 @@
     <!-- Section 1: About -->
     <section id="aboutsection">
       <div class="content about-content">
-          <h1 class="about-heading">Building</h1>
-          <p class="about-text">Real Estate <i>Fast, Simple, Scalable</i></p>
+          <h1 class="about-heading">Building Where It Matters.</h1>
+          <p class="about-text">Designing and developing high-quality multifamily properties that respect the neighborhood and elevate the community.</p>
           <div class="about-cta">
               <a href="#projectssection" class="cta-button primary">Learn More</a>
               <a href="#contactsection" class="cta-button secondary">Contact Us</a>
           </div>
       </div>
-      <!-- Decorative Middle Square -->
-      <div class="middle-square"></div>
+
+      <!-- Isometric neighborhood infill animation -->
+      <!--
+        Ground plane formula (far sidewalk edge):
+        x <= 600: ground_y = 480 - (x - 100) * 0.2
+        x >= 600: ground_y = 380 + (x - 600) * 0.2
+
+        Face polygon vertex order (clockwise from top-ridge):
+        Left face:  ridge-top, ridge-bottom, left-bottom, left-top
+        Right face: ridge-top, right-top, right-bottom, ridge-bottom
+        (ridge is the shared vertical edge; bottom edges sit on ground)
+      -->
+      <div class="neighborhood-container">
+        <svg class="neighborhood" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="clip-infill">
+              <!-- Diamond matching lot footprint, extended upward for full building height -->
+              <polygon points="510,462 600,480 690,462 690,280 510,280" />
+            </clipPath>
+            <linearGradient id="golden-shadow" x1="0" y1="0" x2="1" y2="0.5">
+              <stop offset="0%" stop-color="rgba(120,90,60,0.12)" />
+              <stop offset="100%" stop-color="rgba(120,90,60,0)" />
+            </linearGradient>
+          </defs>
+
+          <!-- ===== GROUND PLANE ===== -->
+          <!-- Diamond shifted up 100px; near edge is building baseline -->
+          <polygon class="street" points="100,380 600,280 1100,380 600,480" />
+          <polygon class="sidewalk-far" points="100,380 600,280 1100,380 1080,372 600,275 120,372" />
+          <polygon class="sidewalk-near" points="100,380 600,480 1100,380 1120,388 600,492 80,388" />
+          <polygon class="golden-shadow" points="500,320 700,420 1100,420 900,320" />
+
+          <!-- ===== FAR-LEFT COTTAGE ===== -->
+          <!-- Box: Cx=170, half-w=50, wall-h=30 -->
+          <!-- Footprint: front(170,394) left(120,384) back(170,374) right(220,384) -->
+          <g class="existing-building">
+            <polygon class="face-left" points="170,364 170,394 120,384 120,354" />
+            <polygon class="face-right" points="170,364 220,354 220,384 170,394" />
+            <polygon class="face-top" points="170,364 220,354 170,344 120,354" />
+            <!-- Left face window -->
+            <polygon class="ctx-window" points="150,374 150,382 138,380 138,372" />
+            <!-- Right face door -->
+            <polygon class="ctx-door" points="190,362 200,360 200,380 190,382" />
+          </g>
+
+          <!-- ===== LEFT HOUSE (2.5-story) ===== -->
+          <!-- Box: Cx=310, half-w=70, wall-h=80 -->
+          <!-- Footprint: front(310,422) left(240,408) back(310,394) right(380,408) -->
+          <g class="existing-building">
+            <polygon class="face-left" points="310,342 310,422 240,408 240,328" />
+            <polygon class="face-right" points="310,342 380,328 380,408 310,422" />
+            <polygon class="face-top" points="310,342 380,328 310,314 240,328" />
+            <!-- Chimney -->
+            <polygon class="chimney" points="350,318 360,316 360,328 350,328" />
+
+            <!-- LEFT FACE windows (slope -0.2y/px going left from front) -->
+            <!-- Row 1 -->
+            <polygon class="ctx-window" points="290,354 278,352 278,363 290,365" />
+            <polygon class="ctx-window" points="266,350 254,348 254,359 266,361" />
+            <!-- Row 2 -->
+            <polygon class="ctx-window" points="290,374 278,372 278,383 290,385" />
+            <polygon class="ctx-window" points="266,370 254,368 254,379 266,381" />
+            <!-- Row 3 -->
+            <polygon class="ctx-window" points="290,394 278,392 278,403 290,405" />
+            <polygon class="ctx-door" points="266,390 254,388 254,405 266,407" />
+
+            <!-- RIGHT FACE windows (slope -0.2y/px going right from front) -->
+            <!-- Row 1 -->
+            <polygon class="ctx-window" points="330,354 342,352 342,363 330,365" />
+            <polygon class="ctx-window" points="354,350 366,348 366,359 354,361" />
+            <!-- Row 2 -->
+            <polygon class="ctx-window" points="330,374 342,372 342,383 330,385" />
+            <polygon class="ctx-window" points="354,370 366,368 366,379 354,381" />
+            <!-- Row 3 -->
+            <polygon class="ctx-window" points="330,394 342,392 342,403 330,405" />
+            <polygon class="ctx-window" points="354,390 366,388 366,399 354,401" />
+          </g>
+
+          <!-- Mature tree (left side) -->
+          <g class="mature-tree">
+            <rect x="198" y="390" width="5" height="16" fill="#8a7a6a" />
+            <ellipse cx="200" cy="381" rx="18" ry="14" fill="#6a7a5a" />
+          </g>
+
+          <!-- Mature tree (between left house and lot) -->
+          <g class="mature-tree">
+            <rect x="448" y="444" width="5" height="14" fill="#8a7a6a" />
+            <ellipse cx="450" cy="436" rx="16" ry="12" fill="#6a7a5a" />
+          </g>
+
+          <!-- ===== EMPTY LOT (center) ===== -->
+          <polygon class="empty-lot" points="600,480 690,462 600,444 510,462" />
+          <polygon class="property-line" points="600,480 690,462 600,444 510,462" />
+
+          <!-- ===== INFILL BUILDING: 12-unit, 3-story modern (flat roof) ===== -->
+          <!-- ridge x=600, half-w=90, wall-h=110 -->
+          <!-- near edge ground: front(600)=480, left(510)=462, right(690)=462 -->
+          <g clip-path="url(#clip-infill)">
+            <g class="infill-building">
+              <!-- Left face: front-top(600,370) front-bot(600,480) left-bot(510,462) left-top(510,352) -->
+              <polygon class="face-left" points="600,370 600,480 510,462 510,352" />
+              <!-- Right face: front-top(600,370) right-top(690,352) right-bot(690,462) front-bot(600,480) -->
+              <polygon class="face-right" points="600,370 690,352 690,462 600,480" />
+              <!-- Flat roof top face -->
+              <polygon class="face-top" points="600,370 690,352 600,334 510,352" />
+              <!-- Parapet rim (5px above roof) -->
+              <polygon class="parapet" points="600,365 690,347 690,352 600,370 510,352 510,347" />
+
+              <!-- Floor division lines -->
+              <!-- Floor 3/2 boundary (1/3 wall = 37px from top) -->
+              <line class="floor-line" x1="510" y1="389" x2="600" y2="407" />
+              <line class="floor-line" x1="600" y1="407" x2="690" y2="389" />
+              <!-- Floor 2/1 boundary (2/3 wall = 73px from top) -->
+              <line class="floor-line" x1="510" y1="425" x2="600" y2="443" />
+              <line class="floor-line" x1="600" y1="443" x2="690" y2="425" />
+
+              <!-- RIGHT FACE WINDOWS (slope -0.2y/px from front toward right) -->
+              <!-- Floor 3 -->
+              <polygon class="infill-window" points="618,374 630,372 630,386 618,388" />
+              <polygon class="infill-window" points="642,369 654,367 654,381 642,383" />
+              <polygon class="infill-window" points="666,364 678,362 678,376 666,378" />
+              <!-- Floor 2 -->
+              <polygon class="infill-window" points="618,411 630,409 630,423 618,425" />
+              <polygon class="infill-window" points="642,406 654,404 654,418 642,420" />
+              <polygon class="infill-window" points="666,401 678,399 678,413 666,415" />
+              <!-- Floor 1 -->
+              <polygon class="infill-window" points="618,447 630,445 630,459 618,461" />
+              <polygon class="infill-door" points="642,442 658,439 658,460 642,463" />
+              <polygon class="infill-window" points="666,437 678,435 678,449 666,451" />
+
+              <!-- LEFT FACE WINDOWS (slope -0.2y/px from front toward left) -->
+              <!-- Floor 3 -->
+              <polygon class="infill-window" points="582,374 570,372 570,386 582,388" />
+              <polygon class="infill-window" points="558,369 546,367 546,381 558,383" />
+              <polygon class="infill-window" points="534,364 522,362 522,376 534,378" />
+              <!-- Floor 2 -->
+              <polygon class="infill-window" points="582,411 570,409 570,423 582,425" />
+              <polygon class="infill-window" points="558,406 546,404 546,418 558,420" />
+              <polygon class="infill-window" points="534,401 522,399 522,413 534,415" />
+              <!-- Floor 1 -->
+              <polygon class="infill-window" points="582,447 570,445 570,459 582,461" />
+              <polygon class="infill-window" points="558,442 546,440 546,454 558,456" />
+              <polygon class="infill-window" points="534,437 522,435 522,449 534,451" />
+            </g>
+          </g>
+
+          <!-- ===== DETAIL ELEMENTS (animated after building) ===== -->
+          <g class="detail-element balconies">
+            <!-- Right face balconies (floor 2, below windows) -->
+            <polygon class="balcony" points="618,425 632,423 632,426 618,428" />
+            <polygon class="balcony" points="666,415 680,413 680,416 666,418" />
+            <!-- Left face balconies (floor 2) -->
+            <polygon class="balcony" points="582,425 568,423 568,426 582,428" />
+            <polygon class="balcony" points="534,415 520,413 520,416 534,418" />
+          </g>
+
+          <!-- ===== RIGHT HOUSE (3-story Victorian) ===== -->
+          <!-- Box: Cx=860, half-w=75, wall-h=100 -->
+          <!-- Footprint: front(860,428) left(785,413) back(860,398) right(935,413) -->
+          <g class="existing-building">
+            <polygon class="face-left" points="860,328 860,428 785,413 785,313" />
+            <polygon class="face-right" points="860,328 935,313 935,413 860,428" />
+            <polygon class="face-top" points="860,328 935,313 860,298 785,313" />
+
+            <!-- LEFT FACE windows (slope -0.2y/px going left from front) -->
+            <!-- Row 1 -->
+            <polygon class="ctx-window" points="840,344 828,342 828,353 840,355" />
+            <polygon class="ctx-window" points="816,340 804,338 804,349 816,351" />
+            <!-- Row 2 -->
+            <polygon class="ctx-window" points="840,369 828,367 828,378 840,380" />
+            <polygon class="ctx-window" points="816,365 804,363 804,374 816,376" />
+            <!-- Row 3 -->
+            <polygon class="ctx-window" points="840,394 828,392 828,403 840,405" />
+            <polygon class="ctx-door" points="816,390 804,388 804,408 816,410" />
+
+            <!-- RIGHT FACE windows (slope -0.2y/px going right from front) -->
+            <!-- Row 1 -->
+            <polygon class="ctx-window" points="880,344 892,342 892,353 880,355" />
+            <polygon class="ctx-window" points="904,340 916,338 916,349 904,351" />
+            <!-- Row 2 -->
+            <polygon class="ctx-window" points="880,369 892,367 892,378 880,380" />
+            <polygon class="ctx-window" points="904,365 916,363 916,374 904,376" />
+            <!-- Row 3 -->
+            <polygon class="ctx-window" points="880,394 892,392 892,403 880,405" />
+            <polygon class="ctx-window" points="904,390 916,388 916,399 904,401" />
+          </g>
+
+          <!-- ===== FAR-RIGHT HOUSE (2-story) ===== -->
+          <!-- Box: Cx=1020, half-w=55, wall-h=55 -->
+          <!-- Footprint: front(1020,396) left(965,385) back(1020,374) right(1075,385) -->
+          <g class="existing-building">
+            <polygon class="face-left" points="1020,341 1020,396 965,385 965,330" />
+            <polygon class="face-right" points="1020,341 1075,330 1075,385 1020,396" />
+            <polygon class="face-top" points="1020,341 1075,330 1020,319 965,330" />
+
+            <!-- LEFT FACE windows (slope -0.2y/px going left from front) -->
+            <!-- Row 1 -->
+            <polygon class="ctx-window" points="1004,353 994,351 994,360 1004,362" />
+            <polygon class="ctx-window" points="984,349 974,347 974,356 984,358" />
+            <!-- Row 2 -->
+            <polygon class="ctx-window" points="1004,373 994,371 994,380 1004,382" />
+            <polygon class="ctx-door" points="984,369 974,367 974,382 984,384" />
+
+            <!-- RIGHT FACE windows (slope -0.2y/px going right from front) -->
+            <!-- Row 1 -->
+            <polygon class="ctx-window" points="1036,353 1048,351 1048,360 1036,362" />
+            <polygon class="ctx-window" points="1056,349 1068,347 1068,356 1056,358" />
+            <!-- Row 2 -->
+            <polygon class="ctx-window" points="1036,373 1048,371 1048,380 1036,382" />
+            <polygon class="ctx-window" points="1056,369 1068,367 1068,376 1056,378" />
+          </g>
+
+          <!-- Mature tree (right side) -->
+          <g class="mature-tree">
+            <rect x="748" y="440" width="5" height="14" fill="#8a7a6a" />
+            <ellipse cx="750" cy="432" rx="16" ry="12" fill="#6a7a5a" />
+          </g>
+          <!-- Mature tree (far right) -->
+          <g class="mature-tree">
+            <rect x="1088" y="374" width="4" height="12" fill="#8a7a6a" />
+            <ellipse cx="1090" cy="368" rx="14" ry="10" fill="#6a7a5a" />
+          </g>
+
+          <!-- ===== NEW LANDSCAPING (animated) ===== -->
+          <g class="landscape-new">
+            <g class="new-tree tree-n1">
+              <rect x="498" y="458" width="4" height="12" fill="#6a7a5a" />
+              <ellipse cx="500" cy="452" rx="14" ry="10" fill="#7a8a6a" />
+            </g>
+            <g class="new-tree tree-n2">
+              <rect x="698" y="458" width="4" height="12" fill="#6a7a5a" />
+              <ellipse cx="700" cy="452" rx="14" ry="10" fill="#7a8a6a" />
+            </g>
+            <ellipse class="new-shrub shrub-1" cx="640" cy="466" rx="8" ry="5" fill="#7a8a6a" />
+            <ellipse class="new-shrub shrub-2" cx="665" cy="464" rx="7" ry="4" fill="#6a7a5a" />
+            <ellipse class="new-shrub shrub-3" cx="555" cy="466" rx="6" ry="4" fill="#7a8a6a" />
+          </g>
+
+          <!-- ===== PEOPLE WALKING (animated) ===== -->
+          <!-- Person 1: man walking right (down-right), left sidewalk — navy jacket -->
+          <g class="person person-1">
+            <!-- Legs — vertical so rotate() swings forward/back -->
+            <line class="leg-l" x1="319" y1="441" x2="319" y2="449" stroke="#4a4a4a" stroke-width="2.5" stroke-linecap="round" style="transform-origin:319px 441px" />
+            <line class="leg-r" x1="321" y1="441" x2="321" y2="449" stroke="#4a4a4a" stroke-width="2.5" stroke-linecap="round" style="transform-origin:321px 441px" />
+            <!-- Torso -->
+            <rect x="316" y="431" width="8" height="10" rx="2" fill="#3a4a5a" />
+            <!-- Arms — vertical so rotate() swings naturally -->
+            <line class="arm-l" x1="316" y1="433" x2="316" y2="439" stroke="#3a4a5a" stroke-width="2" stroke-linecap="round" style="transform-origin:316px 433px" />
+            <line class="arm-r" x1="324" y1="433" x2="324" y2="439" stroke="#3a4a5a" stroke-width="2" stroke-linecap="round" style="transform-origin:324px 433px" />
+            <!-- Head -->
+            <circle cx="320" cy="428" r="3.5" fill="#c4a882" />
+            <ellipse cx="320" cy="426.5" rx="3.8" ry="2" fill="#5a4a3a" /><!-- hair -->
+          </g>
+
+          <!-- Person 2: woman walking left (down-left), right sidewalk — coral top -->
+          <g class="person person-2">
+            <!-- Legs — vertical so rotate() swings forward/back -->
+            <line class="leg-l" x1="879" y1="446" x2="879" y2="454" stroke="#5a5a5a" stroke-width="2.5" stroke-linecap="round" style="transform-origin:879px 446px" />
+            <line class="leg-r" x1="881" y1="446" x2="881" y2="454" stroke="#5a5a5a" stroke-width="2.5" stroke-linecap="round" style="transform-origin:881px 446px" />
+            <rect x="876" y="437" width="8" height="9" rx="2" fill="#c4703f" />
+            <!-- Arms — vertical so rotate() swings naturally -->
+            <line class="arm-l" x1="876" y1="439" x2="876" y2="445" stroke="#c4703f" stroke-width="2" stroke-linecap="round" style="transform-origin:876px 439px" />
+            <line class="arm-r" x1="884" y1="439" x2="884" y2="445" stroke="#c4703f" stroke-width="2" stroke-linecap="round" style="transform-origin:884px 439px" />
+            <circle cx="880" cy="434" r="3.5" fill="#c4a882" />
+            <ellipse cx="880" cy="433" rx="4" ry="3" fill="#6a4030" /><!-- longer hair -->
+          </g>
+
+          <!-- Person 5: person walking dog, walking left (down-left), far right -->
+          <g class="person person-5">
+            <!-- Legs — vertical so rotate() swings forward/back -->
+            <line class="leg-l" x1="999" y1="412" x2="999" y2="420" stroke="#4a4a4a" stroke-width="2.5" stroke-linecap="round" style="transform-origin:999px 412px" />
+            <line class="leg-r" x1="1001" y1="412" x2="1001" y2="420" stroke="#4a4a4a" stroke-width="2.5" stroke-linecap="round" style="transform-origin:1001px 412px" />
+            <rect x="996" y="403" width="8" height="9" rx="2" fill="#6a6a7a" />
+            <!-- Arms — vertical so rotate() swings naturally -->
+            <line class="arm-l" x1="996" y1="405" x2="996" y2="411" stroke="#6a6a7a" stroke-width="2" stroke-linecap="round" style="transform-origin:996px 405px" />
+            <line class="arm-r" x1="1004" y1="405" x2="1004" y2="411" stroke="#6a6a7a" stroke-width="2" stroke-linecap="round" style="transform-origin:1004px 405px" />
+            <circle cx="1000" cy="400" r="3.5" fill="#c4a882" />
+            <ellipse cx="1000" cy="399" rx="3.5" ry="2" fill="#5a4a3a" />
+            <!-- Leash -->
+            <line x1="1004" y1="409" x2="1012" y2="415" stroke="#5a4a3a" stroke-width="0.7" />
+            <!-- Dog -->
+            <path d="M1008,414 Q1012,411 1016,413 L1017,415 Q1014,417 1008,416 Z" fill="#8a7a6a" />
+            <circle cx="1017" cy="412.5" r="1.8" fill="#8a7a6a" />
+            <ellipse cx="1018.5" cy="411.5" rx="0.8" ry="1.2" fill="#7a6a5a" />
+            <!-- Dog legs -->
+            <line class="dog-leg-l" x1="1009" y1="416" x2="1009" y2="419" stroke="#8a7a6a" stroke-width="1.2" stroke-linecap="round" style="transform-origin:1009px 416px" />
+            <line class="dog-leg-r" x1="1011" y1="416" x2="1011" y2="419" stroke="#8a7a6a" stroke-width="1.2" stroke-linecap="round" style="transform-origin:1011px 416px" />
+            <line class="dog-leg-l" x1="1015" y1="415" x2="1015" y2="418" stroke="#8a7a6a" stroke-width="1.2" stroke-linecap="round" style="transform-origin:1015px 415px" />
+            <line class="dog-leg-r" x1="1016" y1="414" x2="1016" y2="418" stroke="#8a7a6a" stroke-width="1.2" stroke-linecap="round" style="transform-origin:1016px 414px" />
+            <line x1="1007" y1="414" x2="1005" y2="412" stroke="#8a7a6a" stroke-width="0.8" /><!-- tail -->
+          </g>
+
+          <!-- Person 6: cyclist riding right (down-right) along near sidewalk -->
+          <!-- Riding right = front wheel further right and slightly lower (isometric slope) -->
+          <g class="person person-6 cyclist">
+            <!-- Back wheel (higher/left) -->
+            <ellipse cx="466" cy="466" rx="5" ry="4" fill="none" stroke="#5a5a5a" stroke-width="1" />
+            <!-- Front wheel (lower/right, follows slope) -->
+            <ellipse cx="482" cy="469" rx="5" ry="4" fill="none" stroke="#5a5a5a" stroke-width="1" />
+            <!-- Frame — seat tube (back wheel hub up to seat) -->
+            <line x1="466" y1="466" x2="472" y2="457" stroke="#5a5a5a" stroke-width="1.2" />
+            <!-- Frame — top tube (seat to head tube) -->
+            <line x1="472" y1="457" x2="482" y2="460" stroke="#5a5a5a" stroke-width="1.2" />
+            <!-- Frame — down tube (back hub to front hub) -->
+            <line x1="466" y1="466" x2="482" y2="469" stroke="#5a5a5a" stroke-width="0.8" />
+            <!-- Frame — fork (head tube down to front hub) -->
+            <line x1="482" y1="460" x2="482" y2="469" stroke="#5a5a5a" stroke-width="1" />
+            <!-- Handlebars -->
+            <line x1="481" y1="459" x2="485" y2="458" stroke="#5a5a5a" stroke-width="1.2" stroke-linecap="round" />
+            <!-- Seat -->
+            <line x1="470" y1="457" x2="474" y2="456" stroke="#4a4a4a" stroke-width="1.5" stroke-linecap="round" />
+            <!-- Rider legs (pedaling) — vertical for clean rotate -->
+            <line class="pedal-l" x1="470" y1="460" x2="470" y2="466" stroke="#4a4a4a" stroke-width="2" stroke-linecap="round" style="transform-origin:470px 460px" />
+            <line class="pedal-r" x1="470" y1="460" x2="470" y2="466" stroke="#4a4a4a" stroke-width="2" stroke-linecap="round" style="transform-origin:470px 460px" />
+            <!-- Rider torso (leaning forward toward handlebars) -->
+            <rect x="471" y="451" width="6" height="9" rx="2" fill="#5a7a6a" transform="rotate(12, 474, 455)" />
+            <!-- Rider arms reaching to handlebars -->
+            <line x1="477" y1="454" x2="483" y2="459" stroke="#5a7a6a" stroke-width="1.5" stroke-linecap="round" />
+            <!-- Rider head -->
+            <circle cx="475" cy="448" r="3" fill="#c4a882" />
+            <!-- Helmet -->
+            <ellipse cx="476" cy="446.5" rx="3.5" ry="2.2" fill="#4a6a8a" />
+          </g>
+
+          <!-- ===== WINDOW GLOW (positioned inside infill windows) ===== -->
+          <g class="window-glow-group">
+            <!-- Right face glows -->
+            <polygon class="window-glow glow-1" points="619,375 629,373 629,385 619,387" />
+            <polygon class="window-glow glow-2" points="667,365 677,363 677,375 667,377" />
+            <polygon class="window-glow glow-3" points="619,412 629,410 629,422 619,424" />
+            <polygon class="window-glow glow-4" points="643,407 653,405 653,417 643,419" />
+            <!-- Left face glows -->
+            <polygon class="window-glow glow-5" points="581,375 571,373 571,385 581,387" />
+            <polygon class="window-glow glow-6" points="557,370 547,368 547,380 557,382" />
+            <polygon class="window-glow glow-7" points="581,412 571,410 571,422 581,424" />
+            <polygon class="window-glow glow-8" points="557,407 547,405 547,417 557,419" />
+          </g>
+
+        </svg>
+      </div>
   </section>
 
   <!-- Section 2: Projects -->
-  <section id="projectssection" style="background-image: url('resources/images/projects.jpg');">
+  <section id="projectssection">
     <div class="content projects-content">
         <h1 class="projects-heading">Projects</h1>
         <p class="projects-text">Explore some of our recent developments.</p>
@@ -104,7 +446,7 @@
 </section>
 
   <!-- Section 3: Strategy -->
-  <section id="strategysection" style="background-image: url('resources/images/strategy.jpg');">
+  <section id="strategysection">
     <div class="content strategy-content">
         <h1 class="strategy-heading">Strategy</h1>
         <p class="strategy-text">Principles that guide our investments</p>
@@ -122,7 +464,7 @@
               <p>Invest in properties with operational inefficiencies or physical upgrades opportunities.</p>
             </div>
             <div class="strategy-box">
-                <h2>Managment</h2>
+                <h2>Management</h2>
                 <p>Self manage assets to maximize returns.</p>
             </div>
             <div class="strategy-box">
@@ -131,14 +473,14 @@
           </div>
           <div class="strategy-box">
               <h2>Repeat</h2>
-              <p>Stategically reinvest proceeds into the next project.</p>
+              <p>Strategically reinvest proceeds into the next project.</p>
           </div>
         </div>
     </div>
 </section>
 
   <!-- Section 4: Partner -->
-  <section id="partnersection" style="background-image: url('resources/images/partner.jpg');">
+  <section id="partnersection">
     <div class="content partner-content">
         <h1 class="partner-heading">Partner</h1>
         <p class="partner-text">Learn how we collaborate</p>
@@ -170,7 +512,7 @@
                 </div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">Can I invest if im new to real estate investing?</button>
+                <button class="faq-question">Can I invest if I'm new to real estate investing?</button>
                 <div class="faq-answer">
                     <p>Absolutely! We're here to guide you and can provide educational resources that will help you confidently make smarter investing choices.</p>
                 </div>
@@ -185,19 +527,18 @@
         <!-- Header and Contact Info -->
         <h1 class="contact-heading">Contact</h1>
 
-
+        <div class="headshot-container">
+            <img src="resources/images/headshot.jpg" alt="Headshot" class="headshot-image">
+        </div>
+        <p class="contact-text"></p>
+        <p class="contact-text">Steven Niedbala</p>
+        <div class="contact-details">
+            <p>Email: <a href="mailto:example@example.com">steven@vyvv.com</a></p>
+            <p>Phone: +1 (617) 299-6676</p>
+             <!-- <p>Personal Website: <a href="https://niedba.la">niedba.la</a></p> -->
         </div>
 
-
-        <div class="bio-section">
-            <h2 class="bio-heading"></h2>
-            <p class="bio-text">
-                
-            </p>
-        </div>
     </div>
-</section> 
-
 
     <!-- Footer -->
     <footer class="footer">
@@ -214,7 +555,7 @@
             <a href="https://twitter.com" target="_blank">Twitter</a>
             <a href="https://linkedin.com" target="_blank">LinkedIn</a>
         </div>
-        <p class="footer-copyright">© 2024 Vyvv. All Rights Reserved.</p>
+        <p class="footer-copyright">© 2026 Vyvv. All Rights Reserved.</p>
     </footer>
 </section>
 
@@ -225,7 +566,6 @@
     
 </body>
 </html>
-
 
 
 
