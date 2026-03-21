@@ -303,7 +303,7 @@ section h1 {
     text-align: center;
     height: 100vh;
     min-height: 600px;
-    padding: 0 2rem 10vh;
+    padding: 0 2rem 20vh;
     position: relative;
     overflow: hidden;
 }
@@ -578,7 +578,7 @@ section h1 {
 .dog-leg-r { animation: stride-leg-r 0.35s ease-in-out 7.5s 20 forwards; }
 
 .about-heading {
-    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-size: clamp(1.3rem, 2.2vw, 1.6rem);
     font-weight: 600;
     margin-bottom: 0;
     text-transform: uppercase;
@@ -587,7 +587,7 @@ section h1 {
 }
 
 .about-text {
-    font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+    font-size: clamp(0.9rem, 1.2vw, 1.05rem);
     margin-bottom: 0;
     line-height: 1.6;
     color: #6b7a6c;
