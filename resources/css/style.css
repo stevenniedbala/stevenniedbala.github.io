@@ -53,14 +53,17 @@ a.logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    text-transform: lowercase;
-    color: #fff;
-    text-decoration: none;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
     cursor: pointer;
-    transform: rotate(180deg) scaleX(-1);
+}
+
+a.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: lighten;
 }
 
 header a {
