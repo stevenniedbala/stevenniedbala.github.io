@@ -634,7 +634,7 @@ section h1 {
 
 @media (max-width: 768px) {
     #aboutsection {
-        padding: 50px 1.5rem 0;
+        padding: 0 1.5rem 30vh;
         min-height: 100vh;
     }
 
