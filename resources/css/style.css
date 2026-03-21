@@ -303,7 +303,7 @@ section h1 {
     text-align: center;
     height: 100vh;
     min-height: 600px;
-    padding: 60px 2rem 0;
+    padding: 0 2rem 10vh;
     position: relative;
     overflow: hidden;
 }
