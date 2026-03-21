@@ -295,7 +295,6 @@ section h1 {
 
 #aboutsection {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     background: #faf7f2;
@@ -303,26 +302,28 @@ section h1 {
     text-align: center;
     height: 100vh;
     min-height: 600px;
-    padding: 0 2rem 20vh;
-    position: relative;
+    padding: 60px 2rem 0;
     overflow: hidden;
 }
 
+.hero-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
 .about-content {
-    position: relative;
-    z-index: 2;
     max-width: 800px;
     text-align: center;
+    z-index: 2;
 }
 
 /* ---- Neighborhood Infill Animation ---- */
 
 .neighborhood-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60%;
+    width: 100%;
+    height: 40vh;
     pointer-events: none;
     z-index: 1;
     opacity: 0.35;
@@ -633,15 +634,6 @@ section h1 {
 }
 
 @media (max-width: 768px) {
-    #aboutsection {
-        padding: 0 1.5rem 30vh;
-        min-height: 100vh;
-    }
-
-    .neighborhood-container {
-        height: 50%;
-    }
-
     .cta-button {
         font-size: 0.85rem;
         padding: 10px 22px;
