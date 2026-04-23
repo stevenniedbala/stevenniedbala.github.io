@@ -687,10 +687,11 @@ section h1 {
     }
 }
 
-/* Store figures — slow fade in before biker (4.8s) */
+
+/* Store figures — fade in after building lands (2.6s) */
 .store-figure {
     opacity: 0;
-    animation: figure-fade 1.8s ease-in-out 4.0s forwards;
+    animation: figure-fade 1.2s ease-in-out 2.8s forwards;
 }
 @keyframes figure-fade {
     0%   { opacity: 0; }
@@ -740,7 +741,6 @@ section h1 {
     .store-figure {
         animation: none;
         opacity: 1;
-        transform: scale(1);
     }
 
     .detail-element,
