@@ -456,6 +456,18 @@ section h1 {
     }
 }
 
+/* Street trees — planted one-by-one from outer corners inward after park appears */
+.street-tree {
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: center bottom;
+}
+
+/* Park edge trees — two per side, flanking the back tip */
+.st-l1, .st-r1 { animation: plant-tree 0.35s ease-out 4.0s  forwards; }
+.st-l2, .st-r2 { animation: plant-tree 0.35s ease-out 4.3s  forwards; }
+.st-l3, .st-r3 { animation: plant-tree 0.35s ease-out 4.6s  forwards; }
+
 /* Window glow — warm lights turn on */
 .window-glow {
     fill: #f5c96a;
@@ -474,6 +486,17 @@ section h1 {
 
 @keyframes light-on {
     to { opacity: 0.85; }
+}
+
+/* Park landscaping — fades in after infill building finishes rising */
+.park-landscaping {
+    opacity: 0;
+    animation: park-reveal 1.2s ease-out 2.7s forwards;
+}
+
+@keyframes park-reveal {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 /* Golden hour shadow sweep */
@@ -670,6 +693,17 @@ section h1 {
     .empty-lot {
         animation: none;
         opacity: 0;
+    }
+
+    .park-landscaping {
+        animation: none;
+        opacity: 1;
+    }
+
+    .street-tree {
+        animation: none;
+        opacity: 1;
+        transform: scale(1);
     }
 
     .detail-element,
