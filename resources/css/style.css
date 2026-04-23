@@ -515,57 +515,67 @@ section h1 {
     opacity: 0;
 }
 
-.person-1 { animation: walk-right 5s linear 4.2s forwards; }
-.person-2 { animation: walk-left 5.5s linear 4.5s forwards; }
-.person-5 { animation: walk-left-slow 4.5s linear 4.8s forwards; }
-.person-6 { animation: bike-ride 3s linear 4.8s forwards; }
+.person-1 { animation: walk-right-loop 11s linear 4.2s infinite; }
+.person-2 { animation: walk-left-loop 12s linear 4.5s infinite; }
+.person-5 { animation: walk-left-loop-slow 13s linear 4.8s infinite; }
+.person-6 { animation: bike-ride 12s linear 4.8s forwards; }
 
-@keyframes walk-right {
-    0%   { opacity: 0; transform: translateX(0); }
+@keyframes walk-right-loop {
+    0%   { opacity: 0; transform: translateX(0) translateY(0); }
     5%   { opacity: 1; }
-    100% { opacity: 1; transform: translateX(120px) translateY(24px); }
+    80%  { opacity: 1; transform: translateX(400px) translateY(80px); }
+    81%  { opacity: 0; transform: translateX(420px) translateY(84px); }
+    82%  { opacity: 0; transform: translateX(0) translateY(0); }
+    100% { opacity: 0; transform: translateX(0) translateY(0); }
 }
 
-@keyframes walk-left {
-    0%   { opacity: 0; transform: translateX(0); }
+@keyframes walk-left-loop {
+    0%   { opacity: 0; transform: translateX(0) translateY(0); }
     5%   { opacity: 1; }
-    100% { opacity: 1; transform: translateX(-120px) translateY(24px); }
+    80%  { opacity: 1; transform: translateX(-400px) translateY(80px); }
+    81%  { opacity: 0; transform: translateX(-420px) translateY(84px); }
+    82%  { opacity: 0; transform: translateX(0) translateY(0); }
+    100% { opacity: 0; transform: translateX(0) translateY(0); }
 }
 
-@keyframes walk-left-slow {
-    0%   { opacity: 0; transform: translateX(0); }
-    8%   { opacity: 1; }
-    100% { opacity: 1; transform: translateX(-80px) translateY(16px); }
+@keyframes walk-left-loop-slow {
+    0%   { opacity: 0; transform: translateX(0) translateY(0); }
+    6%   { opacity: 1; }
+    80%  { opacity: 1; transform: translateX(-350px) translateY(70px); }
+    81%  { opacity: 0; transform: translateX(-370px) translateY(74px); }
+    82%  { opacity: 0; transform: translateX(0) translateY(0); }
+    100% { opacity: 0; transform: translateX(0) translateY(0); }
 }
 
 @keyframes bike-ride {
-    0%   { opacity: 0; transform: translateX(0); }
-    5%   { opacity: 1; }
-    100% { opacity: 1; transform: translateX(200px) translateY(40px); }
+    0%   { opacity: 0; transform: translateX(0) translateY(0); }
+    2%   { opacity: 1; }
+    88%  { opacity: 1; transform: translateX(730px) translateY(146px); }
+    100% { opacity: 0; transform: translateX(784px) translateY(157px); }
 }
 
-/* Walking leg/arm swing — full stride cycle that starts and ends at neutral */
-/* Person 1: walks 5s from 4.2s */
-.person-1 .leg-l { animation: stride-leg 0.5s ease-in-out 4.2s 10 forwards; }
-.person-1 .leg-r { animation: stride-leg-r 0.5s ease-in-out 4.2s 10 forwards; }
-.person-1 .arm-l { animation: stride-arm-r 0.5s ease-in-out 4.2s 10 forwards; }
-.person-1 .arm-r { animation: stride-arm 0.5s ease-in-out 4.2s 10 forwards; }
+/* Walking leg/arm swing — infinite loop */
+/* Person 1 */
+.person-1 .leg-l { animation: stride-leg 0.75s ease-in-out 4.2s infinite; }
+.person-1 .leg-r { animation: stride-leg-r 0.75s ease-in-out 4.2s infinite; }
+.person-1 .arm-l { animation: stride-arm-r 0.75s ease-in-out 4.2s infinite; }
+.person-1 .arm-r { animation: stride-arm 0.75s ease-in-out 4.2s infinite; }
 
-/* Person 2: walks 5.5s from 4.5s */
-.person-2 .leg-l { animation: stride-leg 0.5s ease-in-out 4.5s 11 forwards; }
-.person-2 .leg-r { animation: stride-leg-r 0.5s ease-in-out 4.5s 11 forwards; }
-.person-2 .arm-l { animation: stride-arm-r 0.5s ease-in-out 4.5s 11 forwards; }
-.person-2 .arm-r { animation: stride-arm 0.5s ease-in-out 4.5s 11 forwards; }
+/* Person 2 */
+.person-2 .leg-l { animation: stride-leg 0.75s ease-in-out 4.5s infinite; }
+.person-2 .leg-r { animation: stride-leg-r 0.75s ease-in-out 4.5s infinite; }
+.person-2 .arm-l { animation: stride-arm-r 0.75s ease-in-out 4.5s infinite; }
+.person-2 .arm-r { animation: stride-arm 0.75s ease-in-out 4.5s infinite; }
 
-/* Person 5 (dog walker): walks 4.5s from 4.8s */
-.person-5 .leg-l { animation: stride-leg 0.5s ease-in-out 4.8s 9 forwards; }
-.person-5 .leg-r { animation: stride-leg-r 0.5s ease-in-out 4.8s 9 forwards; }
-.person-5 .arm-l { animation: stride-arm-r 0.5s ease-in-out 4.8s 9 forwards; }
-.person-5 .arm-r { animation: stride-arm 0.5s ease-in-out 4.8s 9 forwards; }
+/* Person 5 */
+.person-5 .leg-l { animation: stride-leg 0.75s ease-in-out 4.8s infinite; }
+.person-5 .leg-r { animation: stride-leg-r 0.75s ease-in-out 4.8s infinite; }
+.person-5 .arm-l { animation: stride-arm-r 0.75s ease-in-out 4.8s infinite; }
+.person-5 .arm-r { animation: stride-arm 0.75s ease-in-out 4.8s infinite; }
 
-/* Cyclist pedaling: rides 3s from 4.8s */
-.cyclist .pedal-l { animation: stride-leg 0.35s ease-in-out 4.8s 9 forwards; }
-.cyclist .pedal-r { animation: stride-leg-r 0.35s ease-in-out 4.8s 9 forwards; }
+/* Cyclist pedaling: rides 12s from 4.8s */
+.cyclist .pedal-l { animation: stride-leg 0.35s ease-in-out 4.8s 34 forwards; }
+.cyclist .pedal-r { animation: stride-leg-r 0.35s ease-in-out 4.8s 34 forwards; }
 
 /* Full stride: starts neutral → forward → neutral → back → neutral */
 @keyframes stride-leg {
@@ -677,6 +687,26 @@ section h1 {
     }
 }
 
+/* Store figures — slow fade in before biker (4.8s) */
+.store-figure {
+    opacity: 0;
+    animation: figure-fade 1.8s ease-in-out 4.0s forwards;
+}
+@keyframes figure-fade {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Cafe tables — fade in after biker finishes (~7.8s) */
+.cafe-table {
+    opacity: 0;
+    animation: cafe-appear 0.6s ease-out 8.0s forwards;
+}
+@keyframes cafe-appear {
+    0%   { opacity: 0; transform: scale(0.7); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
     .infill-building {
@@ -701,6 +731,13 @@ section h1 {
     }
 
     .street-tree {
+        animation: none;
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .cafe-table,
+    .store-figure {
         animation: none;
         opacity: 1;
         transform: scale(1);

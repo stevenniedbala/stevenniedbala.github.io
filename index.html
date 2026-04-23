@@ -75,7 +75,7 @@
       <div class="hero-group">
       <div class="content about-content">
           <h1 class="about-heading">Building Where It Matters</h1>
-          <p class="about-text">Acquiring, building, and holding multifamily across the Northeast.</p>
+          <p class="about-text">We develop and renovate multifamily housing to create stronger, more vibrant communities.</p>
           <div class="about-cta">
               <a href="#projectssection" class="cta-button primary">Learn More</a>
               <a href="#contactsection" class="cta-button secondary">Contact Us</a>
@@ -365,6 +365,7 @@
               <!-- Parapet rim (5px above roof) -->
               <polygon class="parapet" points="600,365 690,347 690,352 600,370 510,352 510,347" />
 
+
               <!-- Floor division lines -->
               <!-- Floor 3/2 boundary (1/3 wall = 37px from top) -->
               <line class="floor-line" x1="510" y1="389" x2="600" y2="407" />
@@ -382,10 +383,18 @@
               <polygon class="infill-window" points="618,411 630,409 630,423 618,425" />
               <polygon class="infill-window" points="642,406 654,404 654,418 642,420" />
               <polygon class="infill-window" points="666,401 678,399 678,413 666,415" />
-              <!-- Floor 1 -->
-              <polygon class="infill-window" points="618,447 630,445 630,459 618,461" />
-              <polygon class="infill-door" points="642,442 658,439 658,460 642,463" />
-              <polygon class="infill-window" points="666,437 678,435 678,449 666,451" />
+              <!-- Floor 1 RIGHT FACE -->
+              <!-- Corner store zone (center, ridge → col1) — awning + sign + store windows -->
+              <polygon fill="#cc2200" opacity="1"    points="600,443 632,437 632,442 600,448" />
+              <polygon fill="#880000" opacity="0.4"  points="600,448 632,442 632,444 600,450" />
+              <polygon fill="#f5f0e8" opacity="0.92" points="600,450 632,444 632,449 600,455" />
+              <!-- Full-height retail window (floor to sign band) -->
+              <polygon fill="#f5e8a0" opacity="0.85" points="601,456 631,450 631,474 601,480" />
+              <!-- Store door cutout (slightly darker recess in the glass) -->
+              <polygon fill="#c4903a" opacity="0.45" points="619,460 629,458 629,474 619,476" />
+              <!-- Residential zone (far right) — apt door at col2, window at col3 (aligned with floors above) -->
+              <polygon class="infill-door"           points="642,446 654,444 654,462 642,464" />
+              <polygon class="infill-window"         points="666,438 678,436 678,450 666,452" />
 
               <!-- LEFT FACE WINDOWS (slope -0.2y/px from front toward left) -->
               <!-- Floor 3 -->
@@ -396,11 +405,72 @@
               <polygon class="infill-window" points="582,411 570,409 570,423 582,425" />
               <polygon class="infill-window" points="558,406 546,404 546,418 558,420" />
               <polygon class="infill-window" points="534,401 522,399 522,413 534,415" />
-              <!-- Floor 1 -->
-              <polygon class="infill-window" points="582,447 570,445 570,459 582,461" />
-              <polygon class="infill-window" points="558,442 546,440 546,454 558,456" />
-              <polygon class="infill-window" points="534,437 522,435 522,449 534,451" />
+              <!-- Floor 1 LEFT FACE -->
+              <!-- Left face slopes: moving left from x=600, y decreases by 0.2 per px -->
+              <!-- Floor 2 ref: col1(582,411→570,409) col2(558,406→546,404) col3(534,401→522,399) -->
+              <!-- Floor 1 = floor2 + 37px down on y -->
+              <!-- Residential zone (far left) — window at col3, apt door at col2 (aligned with floors above) -->
+              <polygon class="infill-window"         points="534,438 522,436 522,450 534,452" />
+              <polygon class="infill-door"           points="558,443 546,441 546,459 558,461" />
+              <!-- Corner store zone (center, col1 → ridge) — awning + sign + store windows -->
+              <polygon fill="#aa1a00" opacity="1"    points="568,438 600,443 600,448 568,443" />
+              <polygon fill="#660000" opacity="0.4"  points="568,443 600,448 600,450 568,445" />
+              <polygon fill="#f5f0e8" opacity="0.88" points="568,445 600,450 600,455 568,450" />
+              <!-- Full-height retail window (floor to sign band) -->
+              <polygon fill="#f5e8a0" opacity="0.75" points="569,450 599,456 599,480 569,474" />
+              <!-- Silhouette figures inside store window -->
+              <g class="store-figure">
+                <!-- Figure 1 (left, browsing) -->
+                <ellipse cx="578" cy="457" rx="2.5" ry="2.5" fill="#3a2a1a" opacity="0.7" />
+                <polygon fill="#3a2a1a" opacity="0.7" points="576,459 580,459 581,472 575,472" />
+                <line x1="576" y1="462" x2="572" y2="465" stroke="#3a2a1a" stroke-width="1.5" opacity="0.7" />
+                <!-- Figure 2 (right, standing) -->
+                <ellipse cx="590" cy="459" rx="2.5" ry="2.5" fill="#3a2a1a" opacity="0.7" />
+                <polygon fill="#3a2a1a" opacity="0.7" points="588,461 592,461 593,474 587,474" />
+              </g>
             </g>
+          </g>
+
+          <!-- ===== CAFE TABLE left side #2 (further left) ===== -->
+          <g class="cafe-table">
+            <!-- Chair back-left -->
+            <polygon fill="#8a6a48" opacity="0.95" points="538,487 544,489 544,484 538,482" />
+            <polygon fill="#7a5a38" opacity="0.9"  points="538,487 544,489 544,492 538,490" />
+            <!-- Chair back-right -->
+            <polygon fill="#8a6a48" opacity="0.95" points="554,483 560,485 560,480 554,478" />
+            <polygon fill="#7a5a38" opacity="0.9"  points="554,483 560,485 560,488 554,486" />
+            <!-- Table top (isometric diamond) -->
+            <polygon fill="#d4c4a0" opacity="0.97" points="539,481 549,484 555,481 545,478" />
+            <!-- Table leg -->
+            <polygon fill="#b0987a" opacity="0.9"  points="545,484 549,483 549,489 545,490" />
+          </g>
+
+          <!-- ===== CAFE TABLE left side of corner store ===== -->
+          <g class="cafe-table">
+            <!-- Chair back-left -->
+            <polygon fill="#8a6a48" opacity="0.95" points="556,490 562,492 562,487 556,485" />
+            <polygon fill="#7a5a38" opacity="0.9"  points="556,490 562,492 562,495 556,493" />
+            <!-- Chair back-right -->
+            <polygon fill="#8a6a48" opacity="0.95" points="572,486 578,488 578,483 572,481" />
+            <polygon fill="#7a5a38" opacity="0.9"  points="572,486 578,488 578,491 572,489" />
+            <!-- Table top (isometric diamond) -->
+            <polygon fill="#d4c4a0" opacity="0.97" points="557,484 567,487 573,484 563,481" />
+            <!-- Table leg -->
+            <polygon fill="#b0987a" opacity="0.9"  points="563,487 567,486 567,492 563,493" />
+          </g>
+
+          <!-- ===== CAFE TABLE (right side of corner store, on near sidewalk) ===== -->
+          <g class="cafe-table">
+            <!-- Chair back-left -->
+            <polygon fill="#8a6a48" opacity="0.95" points="622,490 628,488 628,483 622,485" />
+            <polygon fill="#7a5a38" opacity="0.9"  points="622,490 628,488 628,491 622,493" />
+            <!-- Chair back-right -->
+            <polygon fill="#8a6a48" opacity="0.95" points="638,486 644,484 644,479 638,481" />
+            <polygon fill="#7a5a38" opacity="0.9"  points="638,486 644,484 644,487 638,489" />
+            <!-- Table top (isometric diamond, above chairs) -->
+            <polygon fill="#d4c4a0" opacity="0.97" points="625,484 635,481 641,484 631,487" />
+            <!-- Table leg -->
+            <polygon fill="#b0987a" opacity="0.9"  points="631,487 635,486 635,492 631,493" />
           </g>
 
           <!-- ===== DETAIL ELEMENTS (animated after building) ===== -->
