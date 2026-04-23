@@ -392,11 +392,11 @@ section h1 {
 /* Property boundary trace */
 .property-line {
     fill: none;
-    stroke: #c4703f;
-    stroke-width: 2;
+    stroke: url(#lot-line-grad);
+    stroke-width: 3;
     stroke-dasharray: 800;
     stroke-dashoffset: 800;
-    animation: trace-boundary 0.8s ease-in-out 0.3s forwards;
+    animation: trace-boundary 1.6s ease-in-out 0.3s forwards;
 }
 
 @keyframes trace-boundary {
@@ -409,15 +409,15 @@ section h1 {
 
 /* Building rise (smooth extrude from ground) */
 .infill-building {
-    transform: translateY(200px);
+    transform: translateY(340px);
     opacity: 0;
-    animation: grow-up 1.4s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
+    animation: grow-up 1.6s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
 }
 
 @keyframes grow-up {
-    0%   { transform: translateY(200px); opacity: 0; }
+    0%   { transform: translateY(340px); opacity: 0; }
     1%   { opacity: 1; }
-    60%  { transform: translateY(-8px); opacity: 1; }
+    62%  { transform: translateY(-42px); opacity: 1; }
     100% { transform: translateY(0); opacity: 1; }
 }
 

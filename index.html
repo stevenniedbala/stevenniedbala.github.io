@@ -130,6 +130,20 @@
               <stop offset="0%" stop-color="rgba(120,90,60,0.12)" />
               <stop offset="100%" stop-color="rgba(120,90,60,0)" />
             </linearGradient>
+            <!-- Property line stroke gradient: coral → blue, following the diamond left→right -->
+            <linearGradient id="lot-line-grad" x1="510" y1="462" x2="690" y2="462" gradientUnits="userSpaceOnUse">
+              <stop offset="0%"   stop-color="#ff2200" />
+              <stop offset="50%"  stop-color="#ffaa00" />
+              <stop offset="100%" stop-color="#00cc44" />
+            </linearGradient>
+            <filter id="lot-line-glow" x="-20%" y="-200%" width="140%" height="500%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
           </defs>
 
           <!-- ===== GROUND PLANE ===== -->
@@ -375,7 +389,7 @@
 
           <!-- ===== EMPTY LOT (center) ===== -->
           <polygon class="empty-lot" points="600,480 690,462 600,444 510,462" />
-          <polygon class="property-line" points="600,480 690,462 600,444 510,462" />
+          <polygon class="property-line" points="600,480 690,462 600,444 510,462" filter="url(#lot-line-glow)" />
 
           <!-- ===== INFILL BUILDING: 12-unit, 3-story modern (flat roof) ===== -->
           <!-- ridge x=600, half-w=90, wall-h=110 -->
