@@ -385,7 +385,7 @@ section h1 {
 .existing-building .face-left   { fill: #1a241b; }
 
 /* Existing building detail elements */
-.ctx-window  { fill: #4a7a8a; }
+.ctx-window  { fill: #1a241b; }
 .ctx-door    { fill: #243026; }
 .roof-right  { fill: #3a4d3b; }
 .roof-left   { fill: #2d3a2e; }
