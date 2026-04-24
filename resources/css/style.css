@@ -79,15 +79,12 @@ header {
     align-items: center;
     transition: background-color 1.2s ease, opacity 0.6s ease;
 }
-header.fading {
-    opacity: 0;
-}
-header.unpinned {
-    position: static;
-    opacity: 0;
-}
 .dark header {
     background-color: #0a0f1a;
+}
+header.fading {
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* Logo Styling */
@@ -645,10 +642,10 @@ section h1 {
     100% { opacity: 1; }
 }
 
-/* Cafe tables — fade in after biker finishes (~7.8s) */
+/* Cafe tables — fade in half a beat after retail tables (5.5s + 0.5s) */
 .cafe-table {
     opacity: 0;
-    animation: cafe-appear 0.6s ease-out 8.0s forwards;
+    animation: cafe-appear 0.6s ease-out 6.0s forwards;
 }
 @keyframes cafe-appear {
     0%   { opacity: 0; transform: scale(0.7); }
