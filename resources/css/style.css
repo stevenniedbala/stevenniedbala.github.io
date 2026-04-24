@@ -17,6 +17,10 @@ body, html {
     font-family: 'Inter', sans-serif;
     background-color: #faf7f2;
     color: #2d3a2e;
+    transition: background-color 1.2s ease;
+}
+body.dark, html:has(body.dark) {
+    background-color: #0a0f1a;
 }
 
 body {
@@ -120,6 +124,8 @@ header nav.right {
     text-align: right;
     padding-top: 0;
     margin-left: auto;
+    display: flex;
+    align-items: center;
 }
 
 /* Desktop Nav Links */
