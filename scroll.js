@@ -21,7 +21,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 document.querySelectorAll('.carousel-arrow').forEach((arrow) => {
     arrow.addEventListener('click', () => {
         const carousel = arrow.closest('.project-carousel');
-        const images = carousel.querySelectorAll('.project-image');
+        const images = Array.from(carousel.querySelectorAll('.project-image')).filter(
+            img => getComputedStyle(img).display !== 'none'
+        );
         let activeIndex = 0;
         images.forEach((img, i) => {
             if (img.classList.contains('active')) activeIndex = i;

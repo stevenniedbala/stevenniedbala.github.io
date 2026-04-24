@@ -862,7 +862,8 @@
         <div class="projects-grid">
             <div class="project-box">
                 <div class="project-carousel">
-                    <img src="resources/images/hockanumrender.png" alt="Hockanum" class="project-image active" decoding="async">
+                    <img src="resources/images/hockanumdaytime.png" alt="Hockanum" class="project-image day-hero active" decoding="async">
+                    <img src="resources/images/hockanumnighttime.png" alt="Hockanum" class="project-image night-hero" decoding="async">
                 </div>
                 <h2>Hockanum</h2>
                 <p>12-unit development project</p>
@@ -879,7 +880,8 @@
             </div>
             <div class="project-box">
                 <div class="project-carousel">
-                    <img src="resources/images/chatrending2.png" alt="Pleasant Street" class="project-image active" decoding="async">
+                    <img src="resources/images/pleasantstreetdaytime.png" alt="Pleasant Street" class="project-image day-hero active" decoding="async">
+                    <img src="resources/images/pleasantstreetnightime.png" alt="Pleasant Street" class="project-image night-hero" decoding="async">
                     <img src="resources/images/408unitckitchen.jpg" alt="Pleasant Street" class="project-image" loading="lazy" decoding="async">
                     <img src="resources/images/408unit2kitchen.jpg" alt="Pleasant Street" class="project-image" loading="lazy" decoding="async">
                     <img src="resources/images/408unit2bathroom.jpg" alt="Pleasant Street" class="project-image" loading="lazy" decoding="async">
@@ -901,9 +903,8 @@
             </div>
             <div class="project-box">
                 <div class="project-carousel">
-                    <img src="resources/images/walnutrendering.png" alt="Walnut" class="project-image active" decoding="async">
-                    <img src="resources/images/walnutrendering.png" alt="Walnut" class="project-image" loading="lazy" decoding="async">
-                    <img src="resources/images/walnutrendering.png" alt="Walnut" class="project-image" loading="lazy" decoding="async">
+                    <img src="resources/images/walnutdaytime.png" alt="Walnut" class="project-image day-hero active" decoding="async">
+                    <img src="resources/images/walnutnighttime.png" alt="Walnut" class="project-image night-hero" decoding="async">
                     <button class="carousel-arrow left">&#8249;</button>
                     <button class="carousel-arrow right">&#8250;</button>
                 </div>
@@ -922,9 +923,8 @@
             </div>
             <div class="project-box">
                 <div class="project-carousel">
-                    <img src="resources/images/cochranrender.png" alt="Cochran" class="project-image active" decoding="async">
-                    <img src="resources/images/cochranrender.png" alt="Cochran" class="project-image" loading="lazy" decoding="async">
-                    <img src="resources/images/cochranrender.png" alt="Cochran" class="project-image" loading="lazy" decoding="async">
+                    <img src="resources/images/cochrandaytime.png" alt="Cochran" class="project-image day-hero active" decoding="async">
+                    <img src="resources/images/cochrannighttime.png" alt="Cochran" class="project-image night-hero" decoding="async">
                     <button class="carousel-arrow left">&#8249;</button>
                     <button class="carousel-arrow right">&#8250;</button>
                 </div>
@@ -943,7 +943,8 @@
             </div>
             <div class="project-box">
                 <div class="project-carousel">
-                    <img src="resources/images/trumbullrender.png" alt="Trumbull" class="project-image active" decoding="async">
+                    <img src="resources/images/trumbulldaytime.png" alt="Trumbull" class="project-image day-hero active" decoding="async">
+                    <img src="resources/images/trumbullnighttime.png" alt="Trumbull" class="project-image night-hero" decoding="async">
                     <img src="resources/images/livingroomtrumbull.jpg" alt="Trumbull" class="project-image" loading="lazy" decoding="async">
                     <img src="resources/images/livingroomtrumbull2.jpg" alt="Trumbull" class="project-image" loading="lazy" decoding="async">
                     <button class="carousel-arrow left">&#8249;</button>
@@ -964,9 +965,9 @@
             </div>
             <div class="project-box">
                 <div class="project-carousel">
-                    <img src="resources/images/joystreetview.jpg" alt="Joy Street" class="project-image active" decoding="async">
+                    <img src="resources/images/joystreetdaytime.jpg" alt="Joy Street" class="project-image day-hero active" decoding="async">
+                    <img src="resources/images/joystreetnighttime.png" alt="Joy Street" class="project-image night-hero" decoding="async">
                     <img src="resources/images/joystreetcourt.jpg" alt="Joy Street" class="project-image" loading="lazy" decoding="async">
-                    <img src="resources/images/joystreetview.jpg" alt="Joy Street" class="project-image" loading="lazy" decoding="async">
                     <button class="carousel-arrow left">&#8249;</button>
                     <button class="carousel-arrow right">&#8250;</button>
                 </div>
@@ -1129,7 +1130,25 @@
     const btn = document.getElementById('dark-toggle');
     btn.addEventListener('click', () => {
       document.body.classList.toggle('dark');
-      btn.textContent = document.body.classList.contains('dark') ? '☀️ Day' : '🌙 Night';
+      const isDark = document.body.classList.contains('dark');
+      btn.textContent = isDark ? '☀️ Day' : '🌙 Night';
+
+      // Swap active hero image in each carousel when mode changes
+      document.querySelectorAll('.project-carousel').forEach(carousel => {
+        const dayHero = carousel.querySelector('.day-hero');
+        const nightHero = carousel.querySelector('.night-hero');
+        if (!dayHero || !nightHero) return;
+        // Only swap if the hero is currently the active slide
+        const heroIsActive = dayHero.classList.contains('active') || nightHero.classList.contains('active');
+        if (!heroIsActive) return;
+        if (isDark) {
+          dayHero.classList.remove('active');
+          nightHero.classList.add('active');
+        } else {
+          nightHero.classList.remove('active');
+          dayHero.classList.add('active');
+        }
+      });
     });
   </script>
 

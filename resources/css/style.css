@@ -889,6 +889,11 @@ section h1 {
     opacity: 1;
 }
 
+/* Day/night hero image swapping */
+.night-hero { display: none; }
+.dark .night-hero { display: block; }
+.dark .day-hero { display: none; }
+
 .carousel-arrow {
     position: absolute;
     top: 50%;
