@@ -7,6 +7,7 @@
 /* General Body Styling */
 html {
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 100%;
 }
 
@@ -386,6 +387,7 @@ section h1 {
 
 /* Existing building detail elements */
 .ctx-window  { fill: #1a241b; }
+.left-house-window { fill: #1a241b; }
 .ctx-door    { fill: #243026; }
 .roof-right  { fill: #3a4d3b; }
 .roof-left   { fill: #2d3a2e; }
