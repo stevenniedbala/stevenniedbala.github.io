@@ -33,6 +33,38 @@ body {
 }
 
 /* ========================= */
+/*       DARK MODE TOGGLE     */
+/* ========================= */
+
+#dark-toggle {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    z-index: 10;
+    background: #2d3a2e;
+    color: #faf7f2;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 18px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+#dark-toggle:hover { background: #3e4e3f; }
+.dark #dark-toggle {
+    background: #faf7f2;
+    color: #0a0f1a;
+}
+.dark #dark-toggle:hover { background: #e0dbd3; }
+
+/* ========================= */
 /*          HEADER            */
 /* ========================= */
 
@@ -303,7 +335,13 @@ section h1 {
     height: 100vh;
     min-height: 600px;
     padding: 60px 2rem 0;
-    overflow: hidden;
+    overflow: visible;
+    position: relative;
+    transition: background 1.2s ease, color 1.2s ease;
+}
+.dark #aboutsection {
+    background: #0a0f1a;
+    color: #ffffff;
 }
 
 .hero-group {
@@ -327,6 +365,7 @@ section h1 {
     pointer-events: none;
     z-index: 1;
     opacity: 0.7;
+    overflow: visible;
 }
 
 .neighborhood {
@@ -346,7 +385,7 @@ section h1 {
 .existing-building .face-left   { fill: #1a241b; }
 
 /* Existing building detail elements */
-.ctx-window  { fill: #1a241b; }
+.ctx-window  { fill: #4a7a8a; }
 .ctx-door    { fill: #243026; }
 .roof-right  { fill: #3a4d3b; }
 .roof-left   { fill: #2d3a2e; }
@@ -494,6 +533,16 @@ section h1 {
     animation: park-reveal 1.2s ease-out 2.7s forwards;
 }
 
+/* Boarding on left house — visible at start, fades out as landscaping comes in */
+.boarding {
+    opacity: 1;
+    animation: boarding-remove 1.5s ease-out 2.7s forwards;
+}
+@keyframes boarding-remove {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+}
+
 @keyframes park-reveal {
     0%   { opacity: 0; }
     100% { opacity: 1; }
@@ -618,7 +667,9 @@ section h1 {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: #2d3a2e;
+    transition: color 1.2s ease;
 }
+.dark .about-heading { color: #ffffff; }
 
 .about-text {
     font-size: clamp(0.9rem, 1.2vw, 1.05rem);
@@ -626,7 +677,9 @@ section h1 {
     line-height: 1.6;
     color: #6b7a6c;
     font-weight: 400;
+    transition: color 1.2s ease;
 }
+.dark .about-text { color: #b0b8c0; }
 
 .about-cta {
     display: flex;
@@ -660,6 +713,11 @@ section h1 {
     background-color: transparent;
     border: 2px solid #2d3a2e;
     color: #2d3a2e;
+    transition: border-color 1.2s ease, color 1.2s ease;
+}
+.dark .cta-button.secondary {
+    border-color: #ffffff;
+    color: #ffffff;
 }
 
 .cta-button.secondary:hover {
@@ -708,6 +766,61 @@ section h1 {
     100% { opacity: 1; transform: scale(1); }
 }
 
+/* Retail building cafe tables — appear as biker passes the building (~0.5s after biker becomes visible) */
+.cafe-table-retail {
+    opacity: 0;
+    animation: cafe-appear 0.6s ease-out 5.5s forwards;
+}
+
+/* ---- Street lamps — shown only in dark mode ---- */
+.street-lamp {
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.dark .street-lamp {
+    opacity: 1;
+    animation: lamp-flicker 0.6s ease-in 0s forwards;
+}
+@keyframes lamp-flicker {
+    0%   { opacity: 0; }
+    30%  { opacity: 1; }
+    45%  { opacity: 0.2; }
+    60%  { opacity: 1; }
+    75%  { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+.lamp-bulb {
+    filter: drop-shadow(0 0 6px #ffe060);
+}
+
+/* SVG lamp cone — grows when dark mode activates */
+.lamp-cone {
+    opacity: 0;
+    clip-path: inset(0% 0% 100% 0%);
+    transition: opacity 0.4s ease;
+}
+.dark .lamp-cone {
+    animation: cone-grow 0.875s ease-out 0.2s forwards;
+}
+@keyframes cone-grow {
+    0%   { opacity: 0;   clip-path: inset(0% 0% 100% 0%); }
+    8%   { opacity: 0.9; clip-path: inset(0% 0% 100% 0%); }
+    15%  { opacity: 0.2; clip-path: inset(0% 0% 95% 0%); }
+    22%  { opacity: 1;   clip-path: inset(0% 0% 88% 0%); }
+    100% { opacity: 1;   clip-path: inset(0% 0% 0% 0%); }
+}
+
+/* ---- Night mode windows ---- */
+.ctx-window {
+    transition: fill 0.8s ease;
+}
+.dark .ctx-window { fill: #f5c842; }
+
+.infill-window {
+    transition: fill 0.8s ease, opacity 0.8s ease;
+}
+.dark .infill-window { fill: #ffe066; opacity: 1; }
+
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
     .infill-building {
@@ -731,6 +844,11 @@ section h1 {
         opacity: 1;
     }
 
+    .boarding {
+        animation: none;
+        opacity: 0;
+    }
+
     .street-tree {
         animation: none;
         opacity: 1;
@@ -738,10 +856,14 @@ section h1 {
     }
 
     .cafe-table,
+    .cafe-table-retail,
     .store-figure {
         animation: none;
         opacity: 1;
     }
+
+    .ctx-window { transition: none; }
+    .infill-window { transition: none; }
 
     .detail-element,
     .new-tree,
@@ -782,6 +904,11 @@ section h1 {
 #projectssection {
     text-align: center;
     background-color: #f0ece4;
+    transition: background-color 1.2s ease, color 1.2s ease;
+}
+.dark #projectssection {
+    background-color: #0a0f1a;
+    color: #ffffff;
 }
 
 .projects-heading {
@@ -791,13 +918,17 @@ section h1 {
     color: #2d3a2e;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    transition: color 1.2s ease;
 }
+.dark .projects-heading { color: #ffffff; }
 
 .projects-text {
     font-size: 1.1rem;
     margin-bottom: 2rem;
     color: #6b7a6c;
+    transition: color 1.2s ease;
 }
+.dark .projects-text { color: #b0b8c0; }
 
 .projects-grid {
     display: flex;
@@ -813,6 +944,7 @@ section h1 {
     flex-direction: column;
     background-color: #faf7f2;
     border: 1px solid #d4cfc6;
+    transition: background-color 1.2s ease, border-color 1.2s ease;
     border-radius: 4px;
     overflow: hidden;
     text-align: center;
@@ -831,13 +963,17 @@ section h1 {
     font-weight: 600;
     margin: 1rem 1rem 0.5rem;
     color: #2d3a2e;
+    transition: color 1.2s ease;
 }
+.dark .project-box h2 { color: #ffffff; }
 
 .project-box p {
     font-size: 0.95rem;
     color: #6b7a6c;
     margin: 0 1rem 1rem;
+    transition: color 1.2s ease;
 }
+.dark .project-box p { color: #b0b8c0; }
 
 /* Project carousel */
 .project-carousel {
@@ -919,6 +1055,7 @@ section h1 {
     background-color: transparent;
     border: 1px solid #2d3a2e;
     text-decoration: none;
+    transition: color 1.2s ease, border-color 1.2s ease;
     border-radius: 4px;
     transition: all 0.3s ease;
     letter-spacing: 0.05em;
@@ -948,7 +1085,11 @@ section h1 {
     color: #2d3a2e;
     padding: 0.5rem 0;
     border-bottom: 1px solid #d4cfc6;
+    transition: color 1.2s ease;
 }
+.dark .project-details li { color: #ffffff; }
+.dark .project-box { background-color: #161d2e; border-color: #2a3550; }
+.dark .project-link { color: #ffffff; border-color: #ffffff; }
 
 .project-details li:last-child {
     border-bottom: none;

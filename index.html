@@ -120,7 +120,7 @@
         (ridge is the shared vertical edge; bottom edges sit on ground)
       -->
       <div class="neighborhood-container">
-        <svg class="neighborhood" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+        <svg class="neighborhood" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" overflow="visible">
           <defs>
             <clipPath id="clip-infill">
               <!-- Diamond matching lot footprint, extended upward for full building height -->
@@ -129,6 +129,19 @@
             <linearGradient id="golden-shadow" x1="0" y1="0" x2="1" y2="0.5">
               <stop offset="0%" stop-color="rgba(120,90,60,0.12)" />
               <stop offset="100%" stop-color="rgba(120,90,60,0)" />
+            </linearGradient>
+            <!-- Lamp cone gradients — fade to transparent by y=820 (just above project photos) -->
+            <linearGradient id="lamp-grad-left" x1="54" y1="321" x2="54" y2="820" gradientUnits="userSpaceOnUse">
+              <stop offset="0%"   stop-color="#ffe880" stop-opacity="0.5" />
+              <stop offset="45%"  stop-color="#ffcc40" stop-opacity="0.22" />
+              <stop offset="80%"  stop-color="#ffcc40" stop-opacity="0.07" />
+              <stop offset="100%" stop-color="#ffcc40" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient id="lamp-grad-right" x1="1146" y1="321" x2="1146" y2="820" gradientUnits="userSpaceOnUse">
+              <stop offset="0%"   stop-color="#ffe880" stop-opacity="0.5" />
+              <stop offset="45%"  stop-color="#ffcc40" stop-opacity="0.22" />
+              <stop offset="80%"  stop-color="#ffcc40" stop-opacity="0.07" />
+              <stop offset="100%" stop-color="#ffcc40" stop-opacity="0" />
             </linearGradient>
             <!-- Property line stroke gradient: coral → blue, following the diamond left→right -->
             <linearGradient id="lot-line-grad" x1="510" y1="462" x2="690" y2="462" gradientUnits="userSpaceOnUse">
@@ -342,6 +355,53 @@
             <polygon class="ctx-window" points="354,390 366,388 366,399 354,401" />
           </g>
 
+          <!-- ===== BOARDING: left house windows/door — visible initially, fades out with landscaping ===== -->
+          <g class="boarding">
+            <!-- LEFT FACE row-1: left window — board + X cross -->
+            <polygon fill="#8a6a3a" points="289,352 279,350 279,366 289,368" />
+            <line x1="289" y1="352" x2="279" y2="366" stroke="#5a3a18" stroke-width="1.1" opacity="0.75" />
+            <line x1="279" y1="350" x2="289" y2="368" stroke="#5a3a18" stroke-width="1.1" opacity="0.75" />
+            <!-- LEFT FACE row-1: right window — plain board -->
+            <polygon fill="#9a7040" points="265,348 255,346 255,362 265,364" />
+
+            <!-- LEFT FACE row-2: left window — plain board -->
+            <polygon fill="#8a6a3a" points="289,372 279,370 279,386 289,388" />
+            <!-- LEFT FACE row-2: right window — board + X cross -->
+            <polygon fill="#9a7040" points="265,368 255,366 255,382 265,384" />
+            <line x1="265" y1="368" x2="255" y2="382" stroke="#5a3a18" stroke-width="1.1" opacity="0.75" />
+            <line x1="255" y1="366" x2="265" y2="384" stroke="#5a3a18" stroke-width="1.1" opacity="0.75" />
+
+            <!-- LEFT FACE row-3: window — board + X cross -->
+            <polygon fill="#8a6a3a" points="289,392 279,390 279,406 289,408" />
+            <line x1="289" y1="392" x2="279" y2="406" stroke="#5a3a18" stroke-width="1.1" opacity="0.75" />
+            <line x1="279" y1="390" x2="289" y2="408" stroke="#5a3a18" stroke-width="1.1" opacity="0.75" />
+            <!-- LEFT FACE row-3: door — board + X cross -->
+            <polygon fill="#7a5830" points="265,388 255,386 255,408 265,410" />
+            <line x1="265" y1="388" x2="255" y2="408" stroke="#5a3a18" stroke-width="1.2" opacity="0.7" />
+            <line x1="255" y1="388" x2="265" y2="408" stroke="#5a3a18" stroke-width="1.2" opacity="0.7" />
+
+            <!-- RIGHT FACE row-1: left window — plain board -->
+            <polygon fill="#6a5028" points="331,352 343,350 343,366 331,368" />
+            <!-- RIGHT FACE row-1: right window — board + X cross -->
+            <polygon fill="#7a5c30" points="355,348 367,346 367,362 355,364" />
+            <line x1="355" y1="348" x2="367" y2="362" stroke="#3a2010" stroke-width="1.1" opacity="0.75" />
+            <line x1="367" y1="346" x2="355" y2="364" stroke="#3a2010" stroke-width="1.1" opacity="0.75" />
+
+            <!-- RIGHT FACE row-2: left window — board + X cross -->
+            <polygon fill="#6a5028" points="331,372 343,370 343,386 331,388" />
+            <line x1="331" y1="372" x2="343" y2="386" stroke="#3a2010" stroke-width="1.1" opacity="0.75" />
+            <line x1="343" y1="370" x2="331" y2="388" stroke="#3a2010" stroke-width="1.1" opacity="0.75" />
+            <!-- RIGHT FACE row-2: right window — plain board -->
+            <polygon fill="#7a5c30" points="355,368 367,366 367,382 355,384" />
+
+            <!-- RIGHT FACE row-3: left window — plain board -->
+            <polygon fill="#6a5028" points="331,392 343,390 343,406 331,408" />
+            <!-- RIGHT FACE row-3: right window — board + X cross -->
+            <polygon fill="#7a5c30" points="355,388 367,386 367,402 355,404" />
+            <line x1="355" y1="388" x2="367" y2="402" stroke="#3a2010" stroke-width="1.1" opacity="0.75" />
+            <line x1="367" y1="386" x2="355" y2="404" stroke="#3a2010" stroke-width="1.1" opacity="0.75" />
+          </g>
+
           <!-- Mature tree (left side) -->
           <g class="mature-tree">
             <rect x="198" y="390" width="5" height="16" fill="#8a7a6a" />
@@ -386,6 +446,7 @@
             <!-- Right face ground floor: plain dark (back of shop) -->
             <polygon fill="#1e2e1f" opacity="0.5" points="446,430 499,418 499,438 446,449" />
           </g>
+
 
           <!-- ===== EMPTY LOT (center) ===== -->
           <polygon class="empty-lot" points="600,480 690,462 600,444 510,462" />
@@ -469,6 +530,38 @@
                 <polygon fill="#3a2a1a" opacity="0.7" points="588,461 592,461 593,474 587,474" />
               </g>
             </g>
+          </g>
+
+<!-- ===== RETAIL CAFE TABLE #1 (left retail building, near door) ===== -->
+          <g class="cafe-table-retail">
+            <!-- Chair back-left -->
+            <polygon fill="#8a6a48" opacity="0.95" points="406,456 412,458 412,453 406,451" />
+            <!-- Chair seat-left -->
+            <polygon fill="#b8925a" opacity="0.9"  points="405,458 413,460 413,456 405,454" />
+            <!-- Chair back-right -->
+            <polygon fill="#8a6a48" opacity="0.95" points="422,459 428,457 428,452 422,454" />
+            <!-- Chair seat-right -->
+            <polygon fill="#b8925a" opacity="0.9"  points="421,461 429,459 429,455 421,457" />
+            <!-- Table top -->
+            <polygon fill="#c8a870" opacity="0.92" points="407,455 425,459 425,456 407,452" />
+            <!-- Table leg -->
+            <line x1="416" y1="459" x2="416" y2="465" stroke="#7a5a38" stroke-width="1.5" opacity="0.8" />
+          </g>
+
+          <!-- ===== RETAIL CAFE TABLE #2 (left retail building, further left) ===== -->
+          <g class="cafe-table-retail">
+            <!-- Chair back-left -->
+            <polygon fill="#8a6a48" opacity="0.95" points="392,452 398,454 398,449 392,447" />
+            <!-- Chair seat-left -->
+            <polygon fill="#b8925a" opacity="0.9"  points="391,454 399,456 399,452 391,450" />
+            <!-- Chair back-right -->
+            <polygon fill="#8a6a48" opacity="0.95" points="408,455 414,453 414,448 408,450" />
+            <!-- Chair seat-right -->
+            <polygon fill="#b8925a" opacity="0.9"  points="407,457 415,455 415,451 407,453" />
+            <!-- Table top -->
+            <polygon fill="#c8a870" opacity="0.92" points="393,451 411,455 411,452 393,448" />
+            <!-- Table leg -->
+            <line x1="402" y1="455" x2="402" y2="461" stroke="#7a5a38" stroke-width="1.5" opacity="0.8" />
           </g>
 
 <!-- ===== CAFE TABLE left side #2 (further left) ===== -->
@@ -761,9 +854,35 @@
             <polygon class="window-glow glow-8" points="557,407 547,405 547,417 557,419" />
           </g>
 
+          <!-- ===== STREET LAMPS (appear at night) ===== -->
+          <!-- Left lamp post — on near-left sidewalk corner, arm facing left (outward) -->
+          <g class="street-lamp">
+            <line x1="80" y1="390" x2="80" y2="330" stroke="#8a8070" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M80,330 Q80,318 68,316" fill="none" stroke="#8a8070" stroke-width="2.5" stroke-linecap="round" />
+            <line x1="68" y1="316" x2="54" y2="316" stroke="#8a8070" stroke-width="2" stroke-linecap="round" />
+            <ellipse cx="54" cy="318" rx="5" ry="3" fill="#ffe8a0" class="lamp-bulb" />
+            <!-- Light cone: grows downward from bulb off screen -->
+            <polygon class="lamp-cone lamp-cone-left" points="54,321 -220,820 328,820" fill="url(#lamp-grad-left)" />
+          </g>
+          <!-- Right lamp post — on near-right sidewalk corner, arm facing right (outward) -->
+          <g class="street-lamp">
+            <line x1="1120" y1="390" x2="1120" y2="330" stroke="#8a8070" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M1120,330 Q1120,318 1132,316" fill="none" stroke="#8a8070" stroke-width="2.5" stroke-linecap="round" />
+            <line x1="1132" y1="316" x2="1146" y2="316" stroke="#8a8070" stroke-width="2" stroke-linecap="round" />
+            <ellipse cx="1146" cy="318" rx="5" ry="3" fill="#ffe8a0" class="lamp-bulb" />
+            <!-- Light cone: grows downward from bulb off screen -->
+            <polygon class="lamp-cone lamp-cone-right" points="1146,321 872,820 1566,820" fill="url(#lamp-grad-right)" />
+          </g>
+
         </svg>
       </div>
+
+
       </div><!-- /.hero-group -->
+
+      <!-- Dark mode toggle — anchored to bottom-right of about section -->
+      <button id="dark-toggle" aria-label="Toggle dark mode">🌙 Night</button>
+
   </section>
 
   <!-- Section 2: Projects -->
@@ -1072,7 +1191,14 @@
   <script src="nav.js"></script>
   <script src="scroll.js"></script>
 
-    
+  <script>
+    const btn = document.getElementById('dark-toggle');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      btn.textContent = document.body.classList.contains('dark') ? '☀️ Day' : '🌙 Night';
+    });
+  </script>
+
 </body>
 </html>
 
