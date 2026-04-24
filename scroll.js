@@ -61,3 +61,35 @@ document.querySelectorAll('.faq-question').forEach((button) => {
       faqItem.classList.toggle('open');
   });
 });
+
+// Fade and unpin header when projects section scrolls into view
+(function () {
+  const header = document.querySelector('header');
+  const projects = document.getElementById('projectssection');
+  if (!header || !projects) return;
+
+  let unpinned = false;
+  let fadeTimer = null;
+
+  window.addEventListener('scroll', function () {
+    const projectsTop = projects.getBoundingClientRect().top;
+    const threshold = header.offsetHeight + 40;
+
+    if (!unpinned && projectsTop <= threshold) {
+      // Start fade, then unpin after transition completes
+      header.classList.add('fading');
+      fadeTimer = setTimeout(() => {
+        header.classList.add('unpinned');
+        header.classList.remove('fading');
+        unpinned = true;
+      }, 600);
+    } else if (unpinned && projectsTop > threshold) {
+      // Re-pin and fade back in
+      clearTimeout(fadeTimer);
+      header.classList.remove('unpinned');
+      // Force reflow so opacity transition fires
+      void header.offsetHeight;
+      unpinned = false;
+    }
+  }, { passive: true });
+})();

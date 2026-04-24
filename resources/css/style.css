@@ -5,26 +5,22 @@
 }
 
 /* General Body Styling */
-html {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 100%;
-}
-
-body, html {
+html, body {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
     background-color: #faf7f2;
     color: #2d3a2e;
     transition: background-color 1.2s ease;
+    overflow-x: hidden;
+    scrollbar-width: none;
 }
-body.dark, html:has(body.dark) {
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+}
+body.dark {
     background-color: #0a0f1a;
-}
-
-body {
-    height: 100%;
 }
 
 .desktop {
@@ -77,9 +73,21 @@ header {
     padding: 5px 20px;
     position: fixed;
     top: 0;
-    z-index: 10;
+    left: 0;
+    z-index: 100;
     width: 100%;
     align-items: center;
+    transition: background-color 1.2s ease, opacity 0.6s ease;
+}
+header.fading {
+    opacity: 0;
+}
+header.unpinned {
+    position: static;
+    opacity: 0;
+}
+.dark header {
+    background-color: #0a0f1a;
 }
 
 /* Logo Styling */
