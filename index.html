@@ -59,7 +59,7 @@
             <a onClick="return scrollSmoothTo('contactsection');" class="center desktop links">Contact</a>
         </nav>
         <nav class="right">
-            <button id="dark-toggle-desktop" class="desktop" aria-label="Toggle dark mode">🌙 Night</button>
+            <button id="dark-toggle-desktop" class="desktop" aria-label="Toggle dark mode">☀️ Day</button>
             <button id="nav-toggle" aria-label="Open navigation" aria-expanded="false">
                 <svg id="nav-icon" width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <line class="bar bar-top" x1="0" y1="4" x2="22" y2="4" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
@@ -79,7 +79,7 @@
     </div>
 
     <!-- Floating dark mode toggle -->
-    <button id="dark-toggle" aria-label="Toggle dark mode">🌙</button>
+    <button id="dark-toggle" aria-label="Toggle dark mode">☀️</button>
 
 
 
@@ -1185,8 +1185,8 @@
       const isDark = document.body.classList.contains('dark');
       const mobileBtn = document.getElementById('dark-toggle');
       const desktopBtn = document.getElementById('dark-toggle-desktop');
-      if (mobileBtn) mobileBtn.textContent = isDark ? '☀️' : '🌙';
-      if (desktopBtn) desktopBtn.textContent = isDark ? '☀️ Day' : '🌙 Night';
+      if (mobileBtn) mobileBtn.textContent = isDark ? '🌙' : '☀️';
+      if (desktopBtn) desktopBtn.textContent = isDark ? '🌙 Night' : '☀️ Day';
 
       document.querySelectorAll('.project-carousel').forEach(carousel => {
         const dayHero = carousel.querySelector('.day-hero');
@@ -1208,6 +1208,17 @@
     const desktopBtn = document.getElementById('dark-toggle-desktop');
     if (mobileBtn) mobileBtn.addEventListener('click', toggleDark);
     if (desktopBtn) desktopBtn.addEventListener('click', toggleDark);
+
+    // Position mobile toggle 10% of viewport height below the Contact Us button
+    function positionMobileToggle() {
+      if (window.innerWidth >= 1200) return;
+      const contactBtn = document.querySelector('.cta-button.secondary');
+      if (!contactBtn || !mobileBtn) return;
+      const rect = contactBtn.getBoundingClientRect();
+      mobileBtn.style.top = (rect.bottom + window.scrollY + window.innerHeight * 0.02) + 'px';
+    }
+    positionMobileToggle();
+    window.addEventListener('resize', positionMobileToggle);
   </script>
 
 </body>

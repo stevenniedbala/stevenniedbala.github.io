@@ -117,14 +117,14 @@ document.querySelectorAll('.faq-question').forEach((button) => {
   }, { passive: true });
 })();
 
-// Hide dark toggle once the bottom of the strategy section passes the bottom of the viewport
+// Hide dark toggle when strategy section reaches the viewport
 (function () {
   const toggle = document.getElementById('dark-toggle');
   const strategy = document.getElementById('strategysection');
   if (!toggle || !strategy) return;
   window.addEventListener('scroll', function () {
-    const strategyBottom = strategy.getBoundingClientRect().bottom;
-    if (strategyBottom <= window.innerHeight) {
+    const strategyTop = strategy.getBoundingClientRect().top;
+    if (strategyTop <= window.innerHeight) {
       toggle.classList.add('hidden');
     } else {
       toggle.classList.remove('hidden');
