@@ -38,11 +38,15 @@ body.dark {
 /* ========================= */
 
 #dark-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 200;
     background: #2d3a2e;
     color: #faf7f2;
     border: none;
     border-radius: 50px;
-    padding: 8px 16px;
+    padding: 10px 18px;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.06em;
@@ -51,8 +55,8 @@ body.dark {
     display: flex;
     align-items: center;
     gap: 6px;
-    transition: background 0.3s ease, color 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: background 0.3s ease, color 0.3s ease, opacity 0.4s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
     white-space: nowrap;
 }
 #dark-toggle:hover { background: #3e4e3f; }
@@ -61,6 +65,66 @@ body.dark {
     color: #0a0f1a;
 }
 .dark #dark-toggle:hover { background: #e0dbd3; }
+#dark-toggle.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+/* ========================= */
+/*        NAV TOGGLE          */
+/* ========================= */
+
+#nav-toggle {
+    background: transparent;
+    color: #fff;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 6px 10px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.2s ease;
+}
+#nav-toggle:hover { opacity: 0.7; }
+
+#nav-drawer {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    z-index: 150;
+    background: #2d3a2e;
+    border-radius: 0 0 0 10px;
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+    box-shadow: -2px 4px 20px rgba(0,0,0,0.25);
+    transform: translateX(110%);
+    transition: transform 0.25s ease;
+    pointer-events: none;
+}
+#nav-drawer.open {
+    transform: translateX(0);
+    pointer-events: auto;
+}
+#nav-drawer a {
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 24px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+#nav-drawer a:hover { background: rgba(255,255,255,0.08); }
+.dark #nav-drawer {
+    background: #0a0f1a;
+    box-shadow: -2px 4px 20px rgba(0,0,0,0.5);
+}
 
 /* ========================= */
 /*          HEADER            */

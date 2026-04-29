@@ -3,6 +3,28 @@ function scrollSmoothTo(elementId) {
   element.scrollIntoView({ block: "start", behavior: "smooth" });
 }
 
+// Nav drawer toggle
+const navToggle = document.getElementById('nav-toggle');
+const navDrawer = document.getElementById('nav-drawer');
+
+function navClose() {
+    navDrawer.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navDrawer.setAttribute('aria-hidden', 'true');
+}
+
+if (navToggle && navDrawer) {
+    navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = navDrawer.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+        navDrawer.setAttribute('aria-hidden', String(!isOpen));
+    });
+    document.addEventListener('click', (e) => {
+        if (!navDrawer.contains(e.target) && e.target !== navToggle) navClose();
+    });
+}
+
 // Smooth scroll for internal links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -75,6 +97,21 @@ document.querySelectorAll('.faq-question').forEach((button) => {
       header.classList.add('fading');
     } else {
       header.classList.remove('fading');
+    }
+  }, { passive: true });
+})();
+
+// Hide dark toggle once the bottom of the strategy section passes the bottom of the viewport
+(function () {
+  const toggle = document.getElementById('dark-toggle');
+  const strategy = document.getElementById('strategysection');
+  if (!toggle || !strategy) return;
+  window.addEventListener('scroll', function () {
+    const strategyBottom = strategy.getBoundingClientRect().bottom;
+    if (strategyBottom <= window.innerHeight) {
+      toggle.classList.add('hidden');
+    } else {
+      toggle.classList.remove('hidden');
     }
   }, { passive: true });
 })();

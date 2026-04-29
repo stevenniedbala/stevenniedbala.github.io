@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vyvv | Multifamily Real Estate Development &amp; Investment — Northeast</title>
+    <title>vyvv | Multifamily Real Estate Development &amp; Investment — Northeast</title>
     <meta name="description" content="Vyvv acquires, builds, and holds multifamily residential properties across the Northeast. Partner with us to invest in high-quality urban infill housing." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://vyvv.com/" />
@@ -60,9 +60,21 @@
 
         </nav>
         <nav class="right">
-            <button id="dark-toggle" aria-label="Toggle dark mode">🌙 Night</button>
+            <button id="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
         </nav>
     </header>
+
+    <!-- Mobile / collapsed nav drawer -->
+    <div id="nav-drawer" aria-hidden="true">
+        <a onclick="navClose(); scrollSmoothTo('aboutsection');">About</a>
+        <a onclick="navClose(); scrollSmoothTo('projectssection');">Projects</a>
+        <a onclick="navClose(); scrollSmoothTo('strategysection');">Strategy</a>
+        <a onclick="navClose(); scrollSmoothTo('partnersection');">Partner</a>
+        <a onclick="navClose(); scrollSmoothTo('contactsection');">Contact</a>
+    </div>
+
+    <!-- Floating dark mode toggle -->
+    <button id="dark-toggle" aria-label="Toggle dark mode">🌙 Night</button>
 
 
 
@@ -866,7 +878,7 @@
                     <img src="resources/images/greenmasonrydark.jpg" alt="Hockanum" class="project-image night-hero" decoding="async">
                 </div>
                 <h2>Hockanum</h2>
-                <p>12-unit development project</p>
+                <p>12 unit development project</p>
                 <ul class="project-details">
                     <li>Location: Northampton</li>
                     <li>Units: TBD</li>
@@ -889,7 +901,7 @@
                     <button class="carousel-arrow right">&#8250;</button>
                 </div>
                 <h2>Pleasant Street</h2>
-                <p>7-unit renovation</p>
+                <p>7 unit renovation</p>
                 <ul class="project-details">
                     <li>Location: Northampton</li>
                     <li>Units: TBD</li>
