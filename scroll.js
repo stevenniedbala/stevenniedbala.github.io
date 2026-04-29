@@ -8,17 +8,18 @@ const navToggle = document.getElementById('nav-toggle');
 const navDrawer = document.getElementById('nav-drawer');
 
 function navClose() {
+    if (!navDrawer) return;
     navDrawer.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
-    navDrawer.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('nav-open');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
 }
 
 if (navToggle && navDrawer) {
     navToggle.addEventListener('click', (e) => {
         e.stopPropagation();
         const isOpen = navDrawer.classList.toggle('open');
+        document.body.classList.toggle('nav-open', isOpen);
         navToggle.setAttribute('aria-expanded', String(isOpen));
-        navDrawer.setAttribute('aria-hidden', String(!isOpen));
     });
     document.addEventListener('click', (e) => {
         if (!navDrawer.contains(e.target) && e.target !== navToggle) navClose();
