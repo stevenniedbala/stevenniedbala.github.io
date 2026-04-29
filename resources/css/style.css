@@ -38,8 +38,7 @@ body.dark {
 /* ========================= */
 
 #dark-toggle {
-    position: fixed;
-    bottom: auto;
+    position: absolute;
     right: 0;
     z-index: 200;
     background: transparent;
@@ -51,15 +50,17 @@ body.dark {
     cursor: pointer;
     display: flex;
     align-items: center;
-    transition: opacity 0.4s ease;
-    opacity: 0.25;
+    transition: opacity 0.1s ease;
+    opacity: 0.75;
     box-shadow: none;
 }
-#dark-toggle:hover { opacity: 0.75; }
+#dark-toggle:hover { opacity: 0.25; }
+#dark-toggle {
+    pointer-events: auto;
+}
 #dark-toggle.hidden {
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.4s ease;
 }
 @media (min-width: 1200px) {
     #dark-toggle {

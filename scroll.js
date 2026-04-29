@@ -100,6 +100,28 @@ document.querySelectorAll('.faq-question').forEach((button) => {
   }, { passive: true });
 })();
 
+// Hide mobile toggle when scrolled back up to header area or nav drawer is open
+(function () {
+  const toggle = document.getElementById('dark-toggle');
+  if (!toggle) return;
+  function updateToggleVisibility() {
+    const togglePageTop = parseFloat(toggle.style.top) || 0;
+    const headerHeight = 60;
+    const behindHeader = window.scrollY + headerHeight >= togglePageTop;
+    const navOpen = document.body.classList.contains('nav-open');
+    if (behindHeader || navOpen) {
+      toggle.classList.add('hidden');
+    } else {
+      toggle.classList.remove('hidden');
+    }
+  }
+  window.addEventListener('scroll', updateToggleVisibility, { passive: true });
+  // Also re-check when nav opens/closes
+  document.getElementById('nav-toggle') && document.getElementById('nav-toggle').addEventListener('click', function () {
+    setTimeout(updateToggleVisibility, 50);
+  });
+})();
+
 // Fade header out when projects section reaches it, fade back in on scroll up
 (function () {
   const header = document.querySelector('header');
@@ -117,18 +139,4 @@ document.querySelectorAll('.faq-question').forEach((button) => {
   }, { passive: true });
 })();
 
-// Hide dark toggle when strategy section reaches the viewport
-(function () {
-  const toggle = document.getElementById('dark-toggle');
-  const strategy = document.getElementById('strategysection');
-  if (!toggle || !strategy) return;
-  window.addEventListener('scroll', function () {
-    const strategyTop = strategy.getBoundingClientRect().top;
-    if (strategyTop <= window.innerHeight) {
-      toggle.classList.add('hidden');
-    } else {
-      toggle.classList.remove('hidden');
-    }
-  }, { passive: true });
-})();
 
