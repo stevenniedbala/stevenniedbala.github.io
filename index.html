@@ -59,6 +59,7 @@
             <a onClick="return scrollSmoothTo('contactsection');" class="center desktop links">Contact</a>
         </nav>
         <nav class="right">
+            <button id="dark-toggle-desktop" class="desktop" aria-label="Toggle dark mode">🌙 Night</button>
             <button id="nav-toggle" aria-label="Open navigation" aria-expanded="false">
                 <svg id="nav-icon" width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <line class="bar bar-top" x1="0" y1="4" x2="22" y2="4" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
@@ -78,7 +79,7 @@
     </div>
 
     <!-- Floating dark mode toggle -->
-    <button id="dark-toggle" aria-label="Toggle dark mode">🌙 Night</button>
+    <button id="dark-toggle" aria-label="Toggle dark mode">🌙</button>
 
 
 
@@ -1179,18 +1180,18 @@
   <script src="scroll.js"></script>
 
   <script>
-    const btn = document.getElementById('dark-toggle');
-    btn.addEventListener('click', () => {
+    function toggleDark() {
       document.body.classList.toggle('dark');
       const isDark = document.body.classList.contains('dark');
-      btn.textContent = isDark ? '☀️ Day' : '🌙 Night';
+      const mobileBtn = document.getElementById('dark-toggle');
+      const desktopBtn = document.getElementById('dark-toggle-desktop');
+      if (mobileBtn) mobileBtn.textContent = isDark ? '☀️' : '🌙';
+      if (desktopBtn) desktopBtn.textContent = isDark ? '☀️ Day' : '🌙 Night';
 
-      // Swap active hero image in each carousel when mode changes
       document.querySelectorAll('.project-carousel').forEach(carousel => {
         const dayHero = carousel.querySelector('.day-hero');
         const nightHero = carousel.querySelector('.night-hero');
         if (!dayHero || !nightHero) return;
-        // Only swap if the hero is currently the active slide
         const heroIsActive = dayHero.classList.contains('active') || nightHero.classList.contains('active');
         if (!heroIsActive) return;
         if (isDark) {
@@ -1201,7 +1202,12 @@
           dayHero.classList.add('active');
         }
       });
-    });
+    }
+
+    const mobileBtn = document.getElementById('dark-toggle');
+    const desktopBtn = document.getElementById('dark-toggle-desktop');
+    if (mobileBtn) mobileBtn.addEventListener('click', toggleDark);
+    if (desktopBtn) desktopBtn.addEventListener('click', toggleDark);
   </script>
 
 </body>

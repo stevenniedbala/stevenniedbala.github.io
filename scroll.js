@@ -87,6 +87,19 @@ document.querySelectorAll('.faq-question').forEach((button) => {
   });
 });
 
+// Close nav drawer when user scrolls — disappears before header does
+(function () {
+  const projects = document.getElementById('projectssection');
+  if (!projects) return;
+  window.addEventListener('scroll', function () {
+    if (!navDrawer || !navDrawer.classList.contains('open')) return;
+    const projectsTop = projects.getBoundingClientRect().top;
+    if (projectsTop <= window.innerHeight * 0.75) {
+      navClose();
+    }
+  }, { passive: true });
+})();
+
 // Fade header out when projects section reaches it, fade back in on scroll up
 (function () {
   const header = document.querySelector('header');
