@@ -861,6 +861,26 @@ section h1 {
 }
 .dark .project-box p { color: #b0b8c0; }
 
+/* Photo coming soon placeholder */
+.photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e8e4dd;
+    color: #6b7a6c;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 8px;
+}
+.dark .photo-placeholder {
+    background-color: #1e2635;
+    color: #b0b8c0;
+}
+
 /* Project carousel */
 .project-carousel {
     position: relative;
