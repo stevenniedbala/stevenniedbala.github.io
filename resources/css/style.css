@@ -88,6 +88,39 @@ header {
     align-items: center;
     transition: background-color 1.2s ease, opacity 0.6s ease;
 }
+
+@media (min-width: 1200px) {
+    header {
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(1400px, 80%);
+        border-radius: 50px;
+        padding: 5px 28px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    }
+}
+
+/* Fade strip below the header — masks content scrolling past */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to bottom, #faf7f2 40%, transparent);
+    z-index: 99;
+    pointer-events: none;
+    transition: background 1.2s ease, opacity 0.4s ease;
+}
+body.dark::before {
+    background: linear-gradient(to bottom, #0a0f1a 40%, transparent);
+}
+body.header-gone::before {
+    opacity: 0;
+    transition: background 1.2s ease, opacity 0.4s ease;
+}
 .dark header {
     background-color: #0a0f1a;
 }

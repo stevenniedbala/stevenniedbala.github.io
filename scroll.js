@@ -96,8 +96,10 @@ document.querySelectorAll('.faq-question').forEach((button) => {
     const projectsTop = projects.getBoundingClientRect().top;
     if (projectsTop <= header.offsetHeight) {
       header.classList.add('fading');
+      document.body.classList.add('header-gone');
     } else {
       header.classList.remove('fading');
+      document.body.classList.remove('header-gone');
     }
   }, { passive: true });
 })();
