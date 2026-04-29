@@ -126,6 +126,18 @@ a.logo img {
 }
 #nav-toggle:hover { opacity: 0.7; }
 
+/* 2-bar → 1-bar animation when drawer opens */
+#nav-icon .bar {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+body.nav-open #nav-icon .bar-top {
+    opacity: 0;
+    transform: translateY(4px);
+}
+body.nav-open #nav-icon .bar-bottom {
+    transform: translateY(-4px);
+}
+
 /* Animate 2 bars → 1 bar when drawer is open */
 #nav-icon .bar {
     transition: opacity 0.2s ease, transform 0.2s ease;
